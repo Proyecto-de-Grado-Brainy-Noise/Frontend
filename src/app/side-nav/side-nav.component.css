@@ -1,0 +1,129 @@
+.sidenav {
+    background: #0057B8;
+    transition: all .5s ease;
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    width: 5rem;
+    height: 100vh;
+    box-shadow: 0.063rem 0 1.25rem 0 #01244d;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    padding: 0.938rem 0.938rem 0 0.938rem;
+    width: 100%;
+}
+
+.logo {
+    background-image: url('../../assets/images/brain.png') !important;
+    background-size: contain;
+    text-align: center;
+    width: 3rem;
+    min-width: 3rem;
+    border-radius: 0.313rem;
+    padding: 1.5rem;
+    background-color: transparent;
+    font-size: 24px;
+    font-weight: 900;
+    cursor: pointer;
+    border: none;
+}
+
+.logo-text {
+    background-image: url('../../assets/images/text-logo.png') !important;
+    background-size: contain;
+    text-align: center;
+    margin-left: 1.5rem;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    width: 5rem;
+    min-width: 5rem;
+    padding: 1.5rem;
+    font-size: 24px;
+    font-weight: 700;
+    width: 750px;
+    height: 40px;
+}
+
+.btn-close {
+    margin-left: auto;
+    cursor: pointer;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background-color: transparent;
+    border: none;
+}
+
+.fa-times {
+    color: #fff;
+    font-size: 24px;
+}
+
+.sidenav-collapsed {
+    width: 16.5625rem;
+}
+
+.sidenav-nav {
+    list-style: none;
+    padding: 0.938rem;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: calc(100% - 3.65rem);
+    cursor: pointer;
+}
+
+.sidenav-nav-item {
+    width: 100%;
+    margin-bottom: 0.625rem;
+    border-radius: 0.625rem;
+}
+
+.sidenav-nav-link {
+    display: flex;
+    align-items: center;
+    height: 3rem;
+    color: aliceblue;
+    text-decoration: none;
+    transition: color .3s ease;
+    border-radius: 0.625rem;
+}
+
+.sidenav-link-icon {
+    font-size: 22px;
+    width: 2rem;
+    min-width: 2rem;
+    margin: 0 0.5rem;
+    text-align: center;
+}
+
+.sidenav-link-text {
+    margin-left: 1.5rem;
+}
+
+.sidenav-nav-item:hover {
+    background-color: #fff;
+    color: #F8CD00;
+    border-radius: 5rem;
+}
+
+.sidenav-nav-link:hover {
+    background-color: #fff;
+    color: #F8CD00;
+    border-radius: 5rem;
+}
+
+.sidenav-link-icon:hover {
+    background-color: #fff;
+    color: #F8CD00;
+    border-radius: 5rem;
+}
+
+.active {
+    background-color: #fff;
+}

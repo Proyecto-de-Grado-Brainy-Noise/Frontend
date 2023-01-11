@@ -1,0 +1,74 @@
+.head {
+    width: calc(100% - 5rem);
+    margin-left: 5rem;
+    z-index: 1;
+    transition: all .5s ease;
+    padding: 1rem 1.5rem 0 1.5rem;
+    position: fixed;
+    background: #E7E7E7;
+    top: 0;
+}
+
+.head-trimmed {
+    width: calc(100% - 15.5625rem);
+    margin-left: 16.5625rem;
+}
+
+.head-md-screen {
+    width: calc(100% - 5rem);
+    margin-left: 5rem;
+}
+
+.head-content {
+    background-color: rgb(230, 229, 229);
+    border-radius: 0.625rem;
+    box-shadow: 0px 0px 10px 0 rgb(34 41 47 / 10%);
+    padding: 0.813rem 1.563rem;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+.head-content-right {
+    display: flex;
+    align-items: center;
+}
+
+.head-menu {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 1.25rem;
+}
+
+.head-menu-item-btn {
+    font-size: 18px;
+    height: 42px;
+    width: 42px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    border-radius: 50%;
+    margin-left: 5px;
+    outline: 0;
+    color: #495057;
+}
+
+.head-menu-item-btn:hover,
+.head-menu-item-btn:focus {
+    background: #eff2f3;
+}
+
+.menu-icon {
+    color: #0057B8;
+}
+
+.user-avatar {
+    box-shadow: 0 0 15px rgb(35 35 35 / 15%);
+    margin-right: 15px;
+    color: #F8CD00;
+}
+
+.head-user-name {
+    margin-right: 25px;
+    color: #0057B8;
+}
