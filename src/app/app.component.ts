@@ -15,7 +15,7 @@ export class AppComponent {
 
   isSideNavCollapsed = false;
   screenWidth = 0;
-  logged = false;
+  logged = true;
   reset = false;
 
   onToggleSideNav(data: SideNavToggle): void {

@@ -1,9 +1,68 @@
 <h1>Nueva Consulta</h1>
 <div class="card">
     <div class="card-head">
-        Lorem ipsum - upload-resonance
+        Especificaciones de la Resonancia
     </div>
     <div class="card-body">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus illo tempora nulla soluta eius voluptates ex aut architecto dicta ducimus, obcaecati impedit explicabo sunt animi esse non odit debitis veniam.
+        <form [formGroup]="analyticsForm" (submit)="onAnalyze()" #localForm="ngForm">
+            <div class="inputs">
+                <div class="input-field">
+                    <label>ID de Resonancia </label>
+                    <input
+                            type="text"
+                            id="id"
+                            formControlName="id"
+                            [class.is-invalid]="analyticsForm.get('id')?.invalid"
+                            required>
+                </div>
+                <div class="input-field">
+                    <label>Fecha de Consulta</label>
+                    <input
+                            type="date"
+                            id="date"
+                            formControlName="date"
+                            [class.is-invalid]="analyticsForm.get('date')?.invalid"
+                            required>
+                </div>
+
+                <div class="input-field">
+                    <label>Ubicación de la Imagen</label>
+                    <input
+                            type="file"
+                            class="custom-file"
+                            id="file"
+                            formControlName="file"
+                            [class.is-invalid]="analyticsForm.get('file')?.invalid"
+                            required>
+                </div>
+            </div>
+            <div class="links">
+                <input type="submit" value="Analizar">
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-head">
+        Resultados
+    </div>
+    <div class="card-body">
+        <div class="content" *ngIf="!results">
+            <p style="color: #5B5B5B">Actualmente no hay resultados a mostrar</p>
+        </div>
+        <div class="inputs" *ngIf="results">
+            <div class="input-field">
+                <label>Metadata</label>
+                <textarea></textarea>
+            </div>
+            <div class="input-field">
+                <label>Clasificación ded Ruido</label>
+                <input type="text">
+            </div>
+            <div class="input-field">
+                <input type="submit" value="Descargar CSV">
+            </div>
+        </div>
     </div>
 </div>
