@@ -1,0 +1,120 @@
+<h1>Nuevo Usuario</h1>
+<br>
+<form #newForm="ngForm" class="new-form" (ngSubmit)="onSubmit(newForm.value)">
+    <h2>Información Personal</h2>
+    <div class="row">
+        <div class="col-4">
+            <label for="firstname">Primer nombre </label>
+            <input type="text" id="firstname" name="firstname" minlength="3" #firstname="ngModel" required ngModel><br>
+            <div *ngIf="firstname.invalid && (firstname.dirty || firstname.touched)" class="validation">
+                <div *ngIf="firstname.errors?.['required']"> El primer nombre es requerido. </div>
+                <div *ngIf="firstname.errors?.['minlength']"> El nombre debe tener al menos 3 caracteres. </div>
+            </div>
+        </div>
+        <div class="col-4">
+            <label for="middlename">Segundo nombre </label>
+            <input type="text" id="middlename" name="middlename" minlength="3" #middlename="ngModel" ngModel><br>
+            <div *ngIf="middlename.invalid && (middlename.dirty || middlename.touched)" class="validation">
+                <div *ngIf="middlename.errors?.['minlength']"> El nombre debe tener al menos 3 caracteres. </div>
+            </div>
+        </div>
+        <div class="col-4">
+            <label for="lastname1">Primer apellido </label>
+            <input type="text" id="lastname1" name="lastname1" minlength="3" #lastname1="ngModel" required ngModel><br>
+            <div *ngIf="lastname1.invalid && (lastname1.dirty || lastname1.touched)" class="validation">
+                <div *ngIf="lastname1.errors?.['required']"> El primer apellido es requerido. </div>
+                <div *ngIf="lastname1.errors?.['minlength']"> El apellido debe tener al menos 3 caracteres. </div>
+            </div>
+        </div>
+        <div class="col-4">
+            <label for="lastname2">Segundo apellido </label>
+            <input type="text" id="lastname2" name="lastname2" minlength="3" #lastname2="ngModel" ngModel><br>
+            <div *ngIf="lastname2.invalid && (lastname2.dirty || lastname2.touched)" class="validation">
+                <div *ngIf="lastname2.errors?.['minlength']"> El apellido debe tener al menos 3 caracteres. </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4">
+            <label for="birthdate">Fecha de nacimiento </label>
+            <input type="date" id="birthdate" name="birthdate" #birthdate="ngModel" required ngModel><br>
+            <div *ngIf="birthdate.invalid && (birthdate.dirty || birthdate.touched)" class="validation">
+                <div *ngIf="birthdate.errors?.['required']"> La fecha de nacimiento es requerida. </div>
+            </div>
+        </div>
+        <div class="col-4">
+            <label for="doctype">Tipo de documento </label>
+            <select id="doctype" name="doctype" #doctype="ngModel" required ngModel>
+                <option value="0" disabled selected hidden>Seleccione una opción</option>
+                <option value="1">Cédula de ciudadanía</option>
+                <option value="2">Cédula de extranjería</option>
+                <option value="3">Pasaporte</option>
+            </select><br>
+            <div *ngIf="doctype.invalid && (doctype.dirty || doctype.touched)" class="validation">
+                <div *ngIf="doctype.errors?.['required']"> El tipo de documento es requerido. </div>
+            </div>
+        </div>
+        <div class="col-4">
+            <label for="docnumber">Número de documento </label>
+            <input type="text" id="docnumber" name="docnumber" #docnumber="ngModel" minlength="7" required ngModel><br>
+            <div *ngIf="docnumber.invalid && (docnumber.dirty || docnumber.touched)" class="validation">
+                <div *ngIf="docnumber.errors?.['required']"> El número de documento es requerido. </div>
+                <div *ngIf="docnumber.errors?.['minlength']"> El número de documento debe tener al menos 7 caracteres. </div>
+            </div>
+        </div>
+        <div class="col-4">
+            <label for="email">Correo electrónico </label>
+            <input type="email" id="email" name="email" #email="ngModel" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required ngModel><br>
+            <div *ngIf="email.invalid && (email.dirty || email.touched)" class="validation">
+                <div *ngIf="email.errors?.['required']"> El correo electrónico es requerido. </div>
+                <div *ngIf="email.errors?.['pattern']"> El correo electrónico no es válido. </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <h2>Información Laboral</h2>
+    <div class="row">
+        <div class="col-4">
+            <label for="idemployee">Id de empleado </label>
+            <input type="text" id="idemployee" name="idemployee" #idemployee="ngModel" required ngModel><br>
+            <div *ngIf="idemployee.invalid && (idemployee.dirty || idemployee.touched)" class="validation">
+                <div *ngIf="idemployee.errors?.['required']"> El id de empleado es requerido. </div>
+            </div>
+        </div>
+        <div class="col-4">
+            <label for="jobtitle">Cargo </label>
+            <select id="jobtitle" name="jobtitle" ngModel>
+                <option value="0" disabled selected hidden>Seleccione una opción</option>
+                <option value="1">Médico interno</option>
+                <option value="2">Médico especialista</option>
+                <option value="3">Radiólogo</option>
+                <option value="4">Enfermero</option>
+                <option value="5">Auxiliar</option>
+            </select>
+        </div>
+        <div class="col-4">
+            <label for="area">Área </label>
+            <select id="area" name="area" ngModel>
+                <option value="0" disabled selected hidden>Seleccione una opción</option>
+                <option value="1">Medicina interna</option>
+                <option value="2">Medicina general</option>
+                <option value="3">Radiología</option>
+                <option value="4">Enfermería</option>
+                <option value="5">Auxiliar</option>
+            </select>
+        </div>
+    </div>
+    <br>
+    <h2>Observaciones</h2>
+    <div class="row">
+        <div class="col-12">
+            <textarea id="observations" name="observations" cols="50" rows="5" ngModel></textarea>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary" [disabled]="newForm.invalid"><i class="fas fa-plus"></i> Añadir usuario</button>
+        </div>
+    </div>
+</form>

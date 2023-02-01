@@ -10,10 +10,19 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { BodyComponent } from './body/body.component';
 import { UploadResonanceComponent } from './upload-resonance/upload-resonance.component';
 import { HistoryComponent } from './history/history.component';
+import { NewUserComponent } from './new-user/new-user.component';
+import { SearchUserComponent } from './search-user/search-user.component';
+import { FormsModule }   from '@angular/forms';
+import { AllUsersComponent } from './all-users/all-users.component';
+import { EditUserComponent } from './edit-user/edit-user.component';
 
 const routes: Routes = [
   { path: 'admin/upload-resonance', component: UploadResonanceComponent },
   { path: 'admin/history', component: HistoryComponent },
+  { path: 'admin/new-user', component: NewUserComponent },
+  { path: 'admin/search-user', component: SearchUserComponent },
+  { path: 'admin/users', component: AllUsersComponent },
+  { path: 'admin/edit-user/:idemployee', component: EditUserComponent },
 ]
 
 @NgModule({
@@ -24,12 +33,17 @@ const routes: Routes = [
     DashboardComponent,
     BodyComponent,
     UploadResonanceComponent,
-    HistoryComponent
+    HistoryComponent,
+    NewUserComponent,
+    SearchUserComponent,
+    AllUsersComponent,
+    EditUserComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,9 +1,19 @@
 <h1>Historial</h1>
-<div class="card">
-    <div class="card-head">
-        Lorem ipsum - historial
-    </div>
-    <div class="card-body">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus illo tempora nulla soluta eius voluptates ex aut architecto dicta ducimus, obcaecati impedit explicabo sunt animi esse non odit debitis veniam.
-    </div>
-</div>
+<table class="table-hover table-striped">
+    <thead>
+        <tr>
+            <th>Fecha</th>
+            <th>Usuario</th>
+            <th>Resonancia</th>
+            <th>Resulado</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let request of requests">
+            <td>{{request.date}}</td>
+            <td>{{request.user}}</td>
+            <td>{{request.resonanceId}}</td>
+            <td>{{request.result}}</td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,54 @@
+<h1>Buscador de Usuario</h1>
+<br>
+<div class="card2">
+    <div class="card-head">
+        Búsqueda por ID de Empleado
+    </div>
+    <div class="card-body">
+        <form #searchForm1="ngForm" class="new-form" (ngSubmit)="onSubmit(searchForm1.value)">
+            <div class="col">
+                <label for="id-employee">Id de empleado </label>
+                <input type="text" id="id-employee" name="idemployee" #idemployee="ngModel" required ngModel><br>
+                <div *ngIf="idemployee.invalid && (idemployee.dirty || idemployee.touched)" class="validation">
+                    <div *ngIf="idemployee.errors?.['required']"> El id de empleado es requerido. </div>
+                </div>
+            </div>
+            <div class="col">
+                <button type="submit" class="btn btn-primary" style="width: 30%;" [disabled]="searchForm1.invalid"><i class="fas fa-search"></i> Buscar</button>
+            </div>
+        </form>
+    </div>
+</div>
+<br><br>
+<div class="card2">
+    <div class="card-head">
+        Búsqueda por Documento de identidad
+    </div>
+    <div class="card-body">
+        <form #searchForm2="ngForm" class="new-form" (ngSubmit)="onSubmit(searchForm2.value)">
+            <div class="col">
+                <label for="doctype">Tipo de documento </label>
+                <select id="doctype" name="doctype" #doctype="ngModel" required ngModel>
+                    <option value="0" disabled selected hidden>Seleccione una opción</option>
+                    <option value="1">Cédula de ciudadanía</option>
+                    <option value="2">Cédula de extranjería</option>
+                    <option value="3">Pasaporte</option>
+                </select><br>
+                <div *ngIf="doctype.invalid && (doctype.dirty || doctype.touched)" class="validation">
+                    <div *ngIf="doctype.errors?.['required']"> El tipo de documento es requerido. </div>
+                </div>
+            </div>
+            <div class="col">
+                <label for="docnumber">Número de documento </label>
+                <input type="text" id="docnumber" name="docnumber" #docnumber="ngModel" minlength="7" required ngModel><br>
+                <div *ngIf="docnumber.invalid && (docnumber.dirty || docnumber.touched)" class="validation">
+                    <div *ngIf="docnumber.errors?.['required']"> El número de documento es requerido. </div>
+                    <div *ngIf="docnumber.errors?.['minlength']"> El número de documento debe tener al menos 7 caracteres. </div>
+                </div>
+            </div>
+            <div class="col">
+                <button type="submit" class="btn btn-primary" style="width: 30%;" [disabled]="searchForm2.invalid"><i class="fas fa-search"></i> Buscar</button>
+            </div>    
+        </form>
+    </div>
+</div>
