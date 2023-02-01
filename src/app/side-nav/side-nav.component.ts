@@ -46,7 +46,6 @@ export class SideNavComponent implements OnInit{
 
   ngOnInit(): void {
     this.screenWidth = window.innerWidth;
-    
   }
 
   toggleCollapse(): void {
