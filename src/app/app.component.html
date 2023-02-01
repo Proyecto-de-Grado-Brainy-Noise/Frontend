@@ -1,9 +1,16 @@
-<app-side-nav (onToggleSideNav)="onToggleSideNav($event)"></app-side-nav>
-<app-header
-    [collapsed] = "isSideNavCollapsed"
-    [screenWidth]= "screenWidth"
-></app-header>
-<app-body
-    [collapsed] = "isSideNavCollapsed"
-    [screenWidth]= "screenWidth"
-></app-body>
+<div class="content-body" *ngIf="!logged">
+    <app-login (resetEvent)="receiveReset({$event : $event})" (loggedEvent)="receiveLogin({$event : $event})"></app-login>
+    <app-reset-password *ngIf="reset"></app-reset-password>
+</div>
+<div *ngIf="logged">
+    <app-side-nav (onToggleSideNav)="onToggleSideNav($event)"></app-side-nav>
+    <app-header
+            [collapsed] = "isSideNavCollapsed"
+            [screenWidth]= "screenWidth"
+    ></app-header>
+    <app-body
+            [collapsed] = "isSideNavCollapsed"
+            [screenWidth]= "screenWidth"
+    ></app-body>
+</div>
+

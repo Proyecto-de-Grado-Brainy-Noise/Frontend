@@ -53,6 +53,10 @@ h2 {
     color: #074E9F;
 }
 
+text-danger{
+    color: darkred;
+}
+
 .row {
     display: flex;
     flex-direction: row;

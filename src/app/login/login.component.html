@@ -1,0 +1,36 @@
+<div class="container">
+    <img class="logo" src="../../assets/images/logo-white.png" alt="Logo">
+    <div class="box">
+        <div class="form">
+            <form [formGroup]="loginForm" (submit)="onLogin()" #localForm="ngForm">
+                <h2>Inciar Sesión</h2>
+                <div class="inputBox">
+                    <input type="text"
+                           id="email"
+                           formControlName="email"
+                           [class.is-invalid]="loginForm.get('email')?.invalid"
+                           required>
+                    <span>Correo Electrónico</span>
+                    <i></i>
+                </div>
+                <small style="color: darkred" *ngIf="invalidEmail"> El correo electrónico es incorrecto </small>
+                <div class="inputBox">
+                    <input type="password"
+                           id="password"
+                           formControlName="password"
+                           [class.is-invalid]="loginForm.get('password')?.invalid"
+                           required>
+                    <span>Contraseña</span>
+                    <i></i>
+                </div>
+                <small style="color: darkred" *ngIf="invalidPassword"> La contraseña es incorrecta </small>
+                <div class="links">
+                    <a routerLink="reset-password" (click)="trueReset()">¿Olvidó su contraseña?</a>
+                </div>
+                <div class="links">
+                    <input type="submit" value="Iniciar">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

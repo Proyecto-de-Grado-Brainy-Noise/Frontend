@@ -15,9 +15,19 @@ export class AppComponent {
 
   isSideNavCollapsed = false;
   screenWidth = 0;
+  logged = false;
+  reset = false;
 
   onToggleSideNav(data: SideNavToggle): void {
     this.screenWidth = data.screenWidth;
     this.isSideNavCollapsed = data.collapsed;
+  }
+
+  receiveLogin({$event}: { $event: any }){
+    this.logged = $event;
+  }
+
+  receiveReset({$event}: { $event: any }){
+    this.reset = $event;
   }
 }
