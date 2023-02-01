@@ -21,6 +21,18 @@ body {
     box-shadow: 0 .25rem .5rem #e6edef;
 }
 
+.card2 {
+    display: flex;
+    flex-direction: column;
+    border-radius: .5rem;
+    background-color: #fff;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 .25rem .5rem #e6edef;
+    width: 50%;
+    text-align: center;
+}
+
 .card-head {
     padding: 1rem 1.5rem;
     border-bottom: 1px solid #edf1f7;
@@ -39,4 +51,99 @@ h1 {
 
 h2 {
     color: #074E9F;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 15px;
+}
+
+.row .col-4 {
+    width: 30%;
+}
+
+.col {
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
+
+label {
+    font-size: 1rem;
+    display: block;
+    color: #074E9F;
+}
+
+input {
+    width: 80%;
+    padding: 5px;
+    border: 1px solid #074E9F;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+select {
+    width: 80%;
+    padding: 5px;
+    border: 1px solid #074E9F;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+textarea {
+    width: 80%;
+    padding: 5px;
+    border: 1px solid #074E9F;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.btn-primary {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #074E9F;
+    background-color: #F8CD00;
+    cursor: pointer;
+}
+
+.btn-primary:disabled{
+    cursor: not-allowed;
+}
+
+.validation {
+    color: red;
+    font-size: 0.8rem;
+    width: 80%;
+    padding: 5px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 10px;
+    text-align: center;
+}
+
+th, td {
+    padding: 8px;
+    border: 1px solid black;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+thead, th {
+    background-color: #074E9F;
+    color: white;
+    font-weight: bold;
+    font-size: 1.2rem;
 }

@@ -1,0 +1,23 @@
+<h1>Usuarios</h1>
+<table class="table-hover table-striped">
+    <thead>
+        <tr>
+            <th>Id Empleado</th>
+            <th>Nombre</th>
+            <th>Correo</th>
+            <th>Opciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of users">
+            <td>{{user.idemployee}}</td>
+            <td>{{user.name}}</td>
+            <td>{{user.email}}</td>
+            <td>
+                <a [routerLink]="['/admin/edit-user', user.idemployee]"><i class="fas fa-edit" style="color: #F8CD00;"></i></a> 
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a [routerLink]="['/admin/delete-user', user.idemployee]"><i class="fas fa-trash-alt" style="color: #F8CD00;"></i></a>
+            </td>
+        </tr>
+    </tbody>
+</table>
