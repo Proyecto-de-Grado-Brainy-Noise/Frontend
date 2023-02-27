@@ -36,7 +36,6 @@
                             [class.is-invalid]="newUserForm.get('lastname')?.invalid"
                             required>
                     <small style="color: darkred" *ngIf="invalidLastname1"> El apellido ingresado es inválido </small>
-
                 </div>
 
                 <div class="input-field">
@@ -111,7 +110,6 @@
                             type="text"
                             id="idEmployee"
                             formControlName="idEmployee"
-                            [class.is-invalid]="newUserForm.get('idEmployee')?.invalid"
                             required>
                     <small style="color: darkred" *ngIf="invalidIdemployee"> El ID es inválido </small>
                 </div>
@@ -121,7 +119,6 @@
                     <select id="jobtitle"
                             name="jobtitle"
                             formControlName="jobtitle"
-                            [class.is-invalid]="newUserForm.get('jobtitle')?.invalid"
                             required>
                         <option value="0" disabled selected hidden>Seleccione una opción</option>
                         <option value="Médico interno">Médico interno</option>
@@ -138,7 +135,6 @@
                     <select id="area"
                             name="area"
                             formControlName="area"
-                            [class.is-invalid]="newUserForm.get('area')?.invalid"
                             required>
                         <option value="0" disabled selected hidden>Seleccione una opción</option>
                         <option value="Medicina interna">Medicina interna</option>

@@ -33,7 +33,7 @@ const routes: Routes = [
   { path: 'admin/new-user', component: NewUserComponent },
   { path: 'admin/search-user', component: SearchUserComponent },
   { path: 'admin/users', component: AllUsersComponent },
-  { path: 'admin/edit-user/:idemployee', component: EditUserComponent },
+  { path: 'admin/edit-user/:idEmployee', component: EditUserComponent },
   { path: 'login', component: LoginComponent },
   { path: 'reset-password', component: ResetPasswordComponent },
   { path: 'new-password', component: NewPasswordComponent }

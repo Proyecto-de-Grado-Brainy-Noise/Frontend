@@ -13,10 +13,8 @@
                             type="text"
                             id="firstname"
                             formControlName="firstname"
-                            [class.is-invalid]="editUserForm.get('firstname')?.invalid"
-                            [(ngModel)]="user.firstname"
                             required>
-                    <small style="color: darkred" *ngIf="editUserForm.get('firstname')?.invalid"> El nombre ingresado es inválido </small>
+                    <small style="color: darkred" *ngIf="invalidFirstname"> El nombre ingresado es inválido </small>
                 </div>
 
                 <div class="input-field">
@@ -25,8 +23,6 @@
                             type="text"
                             id="middlename"
                             formControlName="middlename"
-                            [class.is-invalid]="!editUserForm.get('middlename')?.invalid"
-                            [(ngModel)]="user.middlename"
                             required>
                 </div>
 
@@ -37,10 +33,8 @@
                             id="lastname1"
                             formControlName="lastname1"
                             [class.is-invalid]="editUserForm.get('lastname1')?.invalid"
-                            [(ngModel)]="user.lastname1"
                             required>
-                    <small style="color: darkred" *ngIf="editUserForm.get('lastname1')?.invalid"> El apellido ingresado es inválido </small>
-
+                    <small style="color: darkred" *ngIf="invalidLastname1"> El apellido ingresado es inválido </small>
                 </div>
 
                 <div class="input-field">
@@ -49,7 +43,6 @@
                             type="text"
                             id="lastname2"
                             formControlName="lastname2"
-                            [class.is-invalid]="editUserForm.get('lastname2')?.invalid"
                             required>
                 </div>
             </div>
@@ -64,17 +57,18 @@
                             formControlName="birthdate"
                             [class.is-invalid]="editUserForm.get('birthdate')?.invalid"
                             required>
-                    <small style="color: darkred" *ngIf="!editUserForm.get('birthdate')?.invalid"> El fecha de nacimiento es requerida </small>
+                    <small style="color: darkred" *ngIf="invalidBirthdate"> El fecha de nacimiento es requerida </small>
                 </div>
 
                 <div class="input-field">
                     <label>Tipo de documento</label>
-                    <select id="doctype" name="doctype" #doctype="ngModel" required [(ngModel)]="user.doctype">
+                    <select id="doctype" name="doctype" formControlName="doctype" required>
                         <option value="0" disabled selected hidden>Seleccione una opción</option>
                         <option value="1">Cédula de ciudadanía</option>
                         <option value="2">Cédula de extranjería</option>
                         <option value="3">Pasaporte</option>
                     </select>
+                    <small style="color: darkred" *ngIf="invalidDoctype"> Por favor seleccione una opción </small>
                 </div>
 
                 <div class="input-field">
@@ -85,7 +79,7 @@
                             formControlName="docnumber"
                             [class.is-invalid]="editUserForm.get('docnumber')?.invalid"
                             required>
-                    <small style="color: darkred" *ngIf="!editUserForm.get('docnumber')?.invalid"> El número de documento es inválido </small>
+                    <small style="color: darkred" *ngIf="invalidDocnumber"> El número de documento es inválido </small>
                 </div>
 
                 <div class="input-field">
@@ -96,7 +90,7 @@
                             formControlName="email"
                             [class.is-invalid]="editUserForm.get('email')?.invalid"
                             required>
-                    <small style="color: darkred" *ngIf="!editUserForm.get('email')?.invalid"> El correo electrónico inválido es inválido </small>
+                    <small style="color: darkred" *ngIf="invalidEmail"> El correo electrónico inválido es inválido </small>
                 </div>
             </div>
         </div>
@@ -112,37 +106,58 @@
                             type="text"
                             id="idemployee"
                             formControlName="idemployee"
-                            [class.is-invalid]="editUserForm.get('idemployee')?.invalid"
                             required>
-                    <small style="color: darkred" *ngIf="!editUserForm.get('idemployee')?.invalid"> El ID es inválido </small>
+                    <small style="color: darkred" *ngIf="invalidIdemployee"> El ID es inválido </small>
                 </div>
 
                 <div class="input-field">
                     <label>Cargo</label>
-                    <select id="jobtitle" name="jobtitle" #jobtitle="ngModel" [(ngModel)]="user.jobtitle">
+                    <select id="jobtitle"
+                            name="jobtitle"
+                            formControlName="jobtitle"
+                            required>
                         <option value="0" disabled selected hidden>Seleccione una opción</option>
-                        <option value="1">Médico interno</option>
-                        <option value="2">Médico especialista</option>
-                        <option value="3">Radiólogo</option>
-                        <option value="4">Enfermero</option>
-                        <option value="5">Auxiliar</option>
+                        <option value="Médico interno">Médico interno</option>
+                        <option value="Médico especialista">Médico especialista</option>
+                        <option value="Radiólogo">Radiólogo</option>
+                        <option value="Enfermero">Enfermero</option>
+                        <option value="Auxiliar">Auxiliar</option>
                     </select>
+                    <small style="color: darkred" *ngIf="invalidJobtitle"> Por favor seleccione una opción </small>
                 </div>
 
                 <div class="input-field">
                     <label>Área</label>
-                    <select id="area" name="area" #area="ngModel" [(ngModel)]="user.area">
+                    <select id="area"
+                            name="area"
+                            formControlName="area"
+                            required>
                         <option value="0" disabled selected hidden>Seleccione una opción</option>
-                        <option value="1">Medicina interna</option>
-                        <option value="2">Medicina general</option>
-                        <option value="3">Radiología</option>
-                        <option value="4">Enfermería</option>
-                        <option value="5">Auxiliar</option>
+                        <option value="Medicina interna">Medicina interna</option>
+                        <option value="Medicina general">Medicina general</option>
+                        <option value="Radiología">Radiología</option>
+                        <option value="Enfermería">Enfermería</option>
+                        <option value="Auxiliar">Auxiliar</option>
                     </select>
+                    <small style="color: darkred" *ngIf="invalidArea"> Por favor seleccione una opción </small>
                 </div>
                 <div class="input-field">
+                    <label>Rol</label>
+                    <select id="role"
+                            name="role"
+                            formControlName="role"
+                            required>
+                        <option value="0" disabled selected hidden>Seleccione una opción</option>
+                        <option value="U">Usuario</option>
+                        <option value="A">Administrador</option>
+                    </select>
+                    <small style="color: darkred" *ngIf="invalidRole"> Por favor seleccione una opción </small>
+                </div>
+            </div>
+            <div class="inputs">
+                <div class="input-field">
                     <label>Observaciones</label>
-                    <textarea id="observations" name="observations" cols="50" rows="5" #observations="ngModel" [(ngModel)]="user.observations"></textarea>
+                    <textarea id="observations" name="observations" formControlName="observations" cols="50" rows="5"></textarea>
                 </div>
             </div>
             <div class="links">

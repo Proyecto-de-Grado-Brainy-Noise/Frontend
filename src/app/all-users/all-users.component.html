@@ -18,7 +18,7 @@
             <td>{{user.name}} {{user.name2}} {{user.lastname}} {{user.lastname2}}</td>
             <td>{{user.email}}</td>
             <td>
-                <a [routerLink]="['/admin/edit-user', user.idemployee]"><i class="fas fa-edit" style="color: #F8CD00;"></i></a>
+                <a [routerLink]="['/admin/edit-user', user.idEmployee]"><i class="fas fa-edit" style="color: #F8CD00;"></i></a>
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 <a (click)="showDeletePopUp()"><i class="fas fa-trash-alt" style="color: #F8CD00;"></i></a>
                 <app-pop-up *ngIf="showPopUp" [ngModel]="user"></app-pop-up>
