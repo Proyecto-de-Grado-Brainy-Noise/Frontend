@@ -22,7 +22,6 @@ export class LoginComponent implements OnInit{
   invalidEmail = false;
   invalidPassword = false;
 
-
   constructor(private formBuilder: FormBuilder) {
   }
 
@@ -43,6 +42,5 @@ export class LoginComponent implements OnInit{
       this.logged = true;
       this.loggedEvent.emit(this.logged);
     }
-    console.log(this.loginForm.value);
   }
 }

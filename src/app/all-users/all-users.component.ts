@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {HttpClient, HttpResponse} from '@angular/common/http';
 
 @Component({
   selector: 'app-all-users',
@@ -6,16 +7,27 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./all-users.component.css']
 })
 export class AllUsersComponent implements OnInit {
-  users: any = [
-    {idemployee: 1, name: 'John', email: 'john@mail.com'},
-    {idemployee: 2, name: 'Jane', email: 'jane@mail.com'},
-    {idemployee: 3, name: 'Bob', email: 'bob@mail.com'},
-    {idemployee: 4, name: 'Alice', email: 'alice@mail.com'},
-    {idemployee: 5, name: 'Tom', email: 'tom@mail.com'}
-  ];
+
+  showPopUp = false;
+  users: any[] = [];
+  constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
-    console.log(this.users);
+    this.http.get('http://localhost:9000/api/admin/listUsers', { observe: 'response' }).subscribe(
+        (response: HttpResponse<any>) => {
+          if (response.status == 200){
+            this.users = Object.values(response.body.message);
+          }
+        },
+        error => {
+          console.log(error.error.message);
+        }
+    );
   }
+
+  showDeletePopUp():void{
+    this.showPopUp = true;
+  }
+
 
 }

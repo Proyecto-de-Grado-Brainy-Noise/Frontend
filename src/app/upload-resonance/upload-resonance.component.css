@@ -1,0 +1,25 @@
+input[type="file"]{
+    display: none;
+}
+
+.upload-image{
+    display: inline-block;
+    text-transform: uppercase;
+    color: #074E9F;
+    background: #F8CD00;
+    text-align: center;
+    padding: 15px 40px;
+    letter-spacing: 1px;
+    user-select: none;
+    cursor: pointer;
+    width: auto;
+    border-radius: 30px;
+ }
+
+label i{
+    margin-right: 10px;
+}
+
+label:active{
+    transform: scale(0.9);
+}

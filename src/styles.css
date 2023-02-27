@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+@import "~ngx-toastr/toastr";
 
 * {
     margin: 0;
@@ -21,18 +22,6 @@ body {
     box-shadow: 0 .25rem .5rem #e6edef;
 }
 
-.card2 {
-    display: flex;
-    flex-direction: column;
-    border-radius: .5rem;
-    background-color: #fff;
-    margin-left: auto;
-    margin-right: auto;
-    box-shadow: 0 .25rem .5rem #e6edef;
-    width: 50%;
-    text-align: center;
-}
-
 .card-head {
     padding: 1rem 1.5rem;
     border-bottom: 1px solid #edf1f7;
@@ -42,7 +31,7 @@ body {
 }
 
 .card-body {
-    padding: 1rem 1.5rem; 
+    padding: 1rem 1.5rem;
 }
 
 h1 {
@@ -57,41 +46,6 @@ text-danger{
     color: darkred;
 }
 
-.row {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    margin: 15px;
-}
-
-.row .col-4 {
-    width: 30%;
-}
-
-.col {
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    margin: 10px;
-}
-
-label {
-    font-size: 1rem;
-    display: block;
-    color: #074E9F;
-}
-
-input {
-    width: 80%;
-    padding: 5px;
-    border: 1px solid #074E9F;
-    border-radius: 4px;
-    font-size: 1rem;
-}
-
 .inputs{
     display: flex;
     align-items: center;
@@ -102,12 +56,12 @@ input {
 
 .input-field{
     display: flex;
-    align-items: center;
-    width: calc(100% / 3 - 15px);
+    align-items: flex-start;
+    width: calc(100% / 5 - 15px);
     flex-direction: column;
 }
 
-.input-field label{
+label{
     font-size: 12px;
     font-weight: 500;
     color: #074E9F;
@@ -115,7 +69,8 @@ input {
 
 .input-field input[type="text"],
 .input-field input[type="date"],
-.input-field textarea{
+.input-field input[type="email"],
+.input-field select{
     padding: 0 15px;
     font-size: 14px;
     font-weight: 400;
@@ -124,7 +79,19 @@ input {
     margin: 8px 0;
     outline: none;
     border: 1px solid #074E9F;
-    width: 60%;
+    width: 100%;
+}
+
+.input-field textarea{
+    padding: 0 15px;
+    font-size: 14px;
+    font-weight: 400;
+    border-radius: 15px;
+    margin: 8px 0;
+    outline: none;
+    border: 1px solid #074E9F;
+    width: 100%;
+    height: 60px;
 }
 
 .custom-file{
@@ -171,6 +138,40 @@ input[type="submit"]{
     text-align: center;
 }
 
+.content-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    min-width: 400px;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.content-table thead tr{
+    background: #074E9F;
+    color: #E7E7E7;
+    font-weight: bold;
+}
+
+.content-table th,
+.content-table td {
+    padding: 12px 15px;
+    text-align: center;
+}
+
+.content-table tbody tr{
+    border-bottom: 1px solid #E7E7E7;
+}
+
+.content-table tbody tr:nth-of-type(even){
+    background: #E7E7E7;
+}
+
+.content-table tbody tr:last-of-type {
+    border-bottom: 2px solid #074E9F;
+}
+
 input[type="submit"]:active{
     opacity: 0.8;
 }
@@ -181,64 +182,4 @@ input[type="submit"]:active{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-}
-
-select {
-    width: 80%;
-    padding: 5px;
-    border: 1px solid #074E9F;
-    border-radius: 4px;
-    font-size: 1rem;
-}
-
-textarea {
-    width: 80%;
-    padding: 5px;
-    border: 1px solid #074E9F;
-    border-radius: 4px;
-    font-size: 1rem;
-}
-
-.btn-primary {
-    width: 100%;
-    padding: 10px;
-    border: none;
-    border-radius: 4px;
-    font-size: 1rem;
-    font-weight: 600;
-    color: #074E9F;
-    background-color: #F8CD00;
-    cursor: pointer;
-}
-
-.btn-primary:disabled{
-    cursor: not-allowed;
-}
-
-.validation {
-    color: red;
-    font-size: 0.8rem;
-    width: 80%;
-    padding: 5px;
-}
-
-table {
-    border-collapse: collapse;
-    width: 100%;
-    margin: 10px;
-    text-align: center;
-}
-
-th, td {
-    padding: 8px;
-    border: 1px solid black;
-    font-weight: bold;
-    font-size: 1rem;
-}
-
-thead, th {
-    background-color: #074E9F;
-    color: white;
-    font-weight: bold;
-    font-size: 1.2rem;
 }

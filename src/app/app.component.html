@@ -1,5 +1,8 @@
 <div class="content-body" *ngIf="!logged">
-    <app-login (resetEvent)="receiveReset({$event : $event})" (loggedEvent)="receiveLogin({$event : $event})"></app-login>
+    <app-login
+            (resetEvent)="receiveReset({$event : $event})"
+            (loggedEvent)="receiveLogin({$event : $event})"
+    ></app-login>
     <app-reset-password *ngIf="reset"></app-reset-password>
 </div>
 <div *ngIf="logged">
@@ -7,6 +10,7 @@
     <app-header
             [collapsed] = "isSideNavCollapsed"
             [screenWidth]= "screenWidth"
+            (logoutEvent)="receiveLogout({$event : $event})"
     ></app-header>
     <app-body
             [collapsed] = "isSideNavCollapsed"

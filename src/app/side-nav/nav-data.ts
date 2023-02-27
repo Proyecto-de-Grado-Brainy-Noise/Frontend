@@ -1,6 +1,6 @@
 export const navbarData = [
     {
-        routeLink: 'admin/upload-resonance',
+        routeLink: 'upload-resonance',
         icon: 'fal fa-upload',
         label: 'Subir resonancia' 
     } ,

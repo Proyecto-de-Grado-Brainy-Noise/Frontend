@@ -1,19 +1,22 @@
 <h1>Historial</h1>
-<table class="table-hover table-striped">
-    <thead>
+<div class="card">
+    <div class="card-head">
+        Su historial de resonancias consultadas actual es:
+    </div>
+    <table class="content-table">
+        <thead>
         <tr>
             <th>Fecha</th>
-            <th>Usuario</th>
-            <th>Resonancia</th>
-            <th>Resulado</th>
+            <th>ID Paciente</th>
+            <th>Resultado</th>
         </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let request of requests">
-            <td>{{request.date}}</td>
-            <td>{{request.user}}</td>
-            <td>{{request.resonanceId}}</td>
-            <td>{{request.result}}</td>
+        </thead>
+        <tbody>
+        <tr *ngFor="let data of historyData">
+            <td>{{data.fecha}}</td>
+            <td>{{data.idPatient}}</td>
+            <td>{{data.resultado}}</td>
         </tr>
-    </tbody>
-</table>
+        </tbody>
+    </table>
+</div>

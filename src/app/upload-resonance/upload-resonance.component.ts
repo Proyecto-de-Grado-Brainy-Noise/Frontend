@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-upload-resonance',
@@ -25,5 +25,9 @@ export class UploadResonanceComponent implements OnInit{
   onAnalyze(): any{
     this.results = true;
     console.log(this.analyticsForm.value);
+  }
+
+  onUploadImage({e}: { e: any }): any{
+    console.log( e.target.files[0].name);
   }
 }

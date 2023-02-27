@@ -1,120 +1,153 @@
 <h1>Editar Usuario</h1>
-<br>
-<form #newForm="ngForm" class="new-form" (ngSubmit)="onSubmit(newForm.value)">
-    <h2>Información Personal</h2>
-    <div class="row">
-        <div class="col-4">
-            <label for="firstname">Primer nombre </label>
-            <input type="text" id="firstname" name="firstname" minlength="3" #firstname="ngModel" required [(ngModel)]="user.firstname"><br>
-            <div *ngIf="firstname.invalid && (firstname.dirty || firstname.touched)" class="validation">
-                <div *ngIf="firstname.errors?.['required']"> El primer nombre es requerido. </div>
-                <div *ngIf="firstname.errors?.['minlength']"> El nombre debe tener al menos 3 caracteres. </div>
+
+<div class="card">
+    <form [formGroup]="editUserForm" (submit)="onEdit()" #localForm="ngForm">
+        <div class="card-head">
+            Información Personal
+        </div>
+        <div class="card-body">
+            <div class="inputs">
+                <div class="input-field">
+                    <label>Primer nombre</label>
+                    <input
+                            type="text"
+                            id="firstname"
+                            formControlName="firstname"
+                            [class.is-invalid]="editUserForm.get('firstname')?.invalid"
+                            [(ngModel)]="user.firstname"
+                            required>
+                    <small style="color: darkred" *ngIf="editUserForm.get('firstname')?.invalid"> El nombre ingresado es inválido </small>
+                </div>
+
+                <div class="input-field">
+                    <label>Segundo nombre</label>
+                    <input
+                            type="text"
+                            id="middlename"
+                            formControlName="middlename"
+                            [class.is-invalid]="!editUserForm.get('middlename')?.invalid"
+                            [(ngModel)]="user.middlename"
+                            required>
+                </div>
+
+                <div class="input-field">
+                    <label>Primer apellido</label>
+                    <input
+                            type="text"
+                            id="lastname1"
+                            formControlName="lastname1"
+                            [class.is-invalid]="editUserForm.get('lastname1')?.invalid"
+                            [(ngModel)]="user.lastname1"
+                            required>
+                    <small style="color: darkred" *ngIf="editUserForm.get('lastname1')?.invalid"> El apellido ingresado es inválido </small>
+
+                </div>
+
+                <div class="input-field">
+                    <label>Segundo apellido</label>
+                    <input
+                            type="text"
+                            id="lastname2"
+                            formControlName="lastname2"
+                            [class.is-invalid]="editUserForm.get('lastname2')?.invalid"
+                            required>
+                </div>
+            </div>
+
+            <div class="inputs">
+
+                <div class="input-field">
+                    <label>Fecha de nacimiento</label>
+                    <input
+                            type="date"
+                            id="birthdate"
+                            formControlName="birthdate"
+                            [class.is-invalid]="editUserForm.get('birthdate')?.invalid"
+                            required>
+                    <small style="color: darkred" *ngIf="!editUserForm.get('birthdate')?.invalid"> El fecha de nacimiento es requerida </small>
+                </div>
+
+                <div class="input-field">
+                    <label>Tipo de documento</label>
+                    <select id="doctype" name="doctype" #doctype="ngModel" required [(ngModel)]="user.doctype">
+                        <option value="0" disabled selected hidden>Seleccione una opción</option>
+                        <option value="1">Cédula de ciudadanía</option>
+                        <option value="2">Cédula de extranjería</option>
+                        <option value="3">Pasaporte</option>
+                    </select>
+                </div>
+
+                <div class="input-field">
+                    <label>Número de documento</label>
+                    <input
+                            type="text"
+                            id="docnumber"
+                            formControlName="docnumber"
+                            [class.is-invalid]="editUserForm.get('docnumber')?.invalid"
+                            required>
+                    <small style="color: darkred" *ngIf="!editUserForm.get('docnumber')?.invalid"> El número de documento es inválido </small>
+                </div>
+
+                <div class="input-field">
+                    <label>Correo electrónico</label>
+                    <input
+                            type="email"
+                            id="email"
+                            formControlName="email"
+                            [class.is-invalid]="editUserForm.get('email')?.invalid"
+                            required>
+                    <small style="color: darkred" *ngIf="!editUserForm.get('email')?.invalid"> El correo electrónico inválido es inválido </small>
+                </div>
             </div>
         </div>
-        <div class="col-4">
-            <label for="middlename">Segundo nombre </label>
-            <input type="text" id="middlename" name="middlename" minlength="3" #middlename="ngModel" [(ngModel)]="user.middlename"><br>
-            <div *ngIf="middlename.invalid && (middlename.dirty || middlename.touched)" class="validation">
-                <div *ngIf="middlename.errors?.['minlength']"> El nombre debe tener al menos 3 caracteres. </div>
+
+        <div class="card-head">
+            Información Laboral
+        </div>
+        <div class="card-body">
+            <div class="inputs">
+                <div class="input-field">
+                    <label>Id de empleado</label>
+                    <input
+                            type="text"
+                            id="idemployee"
+                            formControlName="idemployee"
+                            [class.is-invalid]="editUserForm.get('idemployee')?.invalid"
+                            required>
+                    <small style="color: darkred" *ngIf="!editUserForm.get('idemployee')?.invalid"> El ID es inválido </small>
+                </div>
+
+                <div class="input-field">
+                    <label>Cargo</label>
+                    <select id="jobtitle" name="jobtitle" #jobtitle="ngModel" [(ngModel)]="user.jobtitle">
+                        <option value="0" disabled selected hidden>Seleccione una opción</option>
+                        <option value="1">Médico interno</option>
+                        <option value="2">Médico especialista</option>
+                        <option value="3">Radiólogo</option>
+                        <option value="4">Enfermero</option>
+                        <option value="5">Auxiliar</option>
+                    </select>
+                </div>
+
+                <div class="input-field">
+                    <label>Área</label>
+                    <select id="area" name="area" #area="ngModel" [(ngModel)]="user.area">
+                        <option value="0" disabled selected hidden>Seleccione una opción</option>
+                        <option value="1">Medicina interna</option>
+                        <option value="2">Medicina general</option>
+                        <option value="3">Radiología</option>
+                        <option value="4">Enfermería</option>
+                        <option value="5">Auxiliar</option>
+                    </select>
+                </div>
+                <div class="input-field">
+                    <label>Observaciones</label>
+                    <textarea id="observations" name="observations" cols="50" rows="5" #observations="ngModel" [(ngModel)]="user.observations"></textarea>
+                </div>
+            </div>
+            <div class="links">
+                <input type="submit" value="Actualizar">
             </div>
         </div>
-        <div class="col-4">
-            <label for="lastname1">Primer apellido </label>
-            <input type="text" id="lastname1" name="lastname1" minlength="3" #lastname1="ngModel" required [(ngModel)]="user.lastname1"><br>
-            <div *ngIf="lastname1.invalid && (lastname1.dirty || lastname1.touched)" class="validation">
-                <div *ngIf="lastname1.errors?.['required']"> El primer apellido es requerido. </div>
-                <div *ngIf="lastname1.errors?.['minlength']"> El apellido debe tener al menos 3 caracteres. </div>
-            </div>
-        </div>
-        <div class="col-4">
-            <label for="lastname2">Segundo apellido </label>
-            <input type="text" id="lastname2" name="lastname2" minlength="3" #lastname2="ngModel" [(ngModel)]="user.lastname2"><br>
-            <div *ngIf="lastname2.invalid && (lastname2.dirty || lastname2.touched)" class="validation">
-                <div *ngIf="lastname2.errors?.['minlength']"> El apellido debe tener al menos 3 caracteres. </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-4">
-            <label for="birthdate">Fecha de nacimiento </label>
-            <input type="date" id="birthdate" name="birthdate" #birthdate="ngModel" required [(ngModel)]="user.birthdate"><br>
-            <div *ngIf="birthdate.invalid && (birthdate.dirty || birthdate.touched)" class="validation">
-                <div *ngIf="birthdate.errors?.['required']"> La fecha de nacimiento es requerida. </div>
-            </div>
-        </div>
-        <div class="col-4">
-            <label for="doctype">Tipo de documento </label>
-            <select id="doctype" name="doctype" #doctype="ngModel" required [(ngModel)]="user.doctype">
-                <option value="0" disabled selected hidden>Seleccione una opción</option>
-                <option value="1">Cédula de ciudadanía</option>
-                <option value="2">Cédula de extranjería</option>
-                <option value="3">Pasaporte</option>
-            </select><br>
-            <div *ngIf="doctype.invalid && (doctype.dirty || doctype.touched)" class="validation">
-                <div *ngIf="doctype.errors?.['required']"> El tipo de documento es requerido. </div>
-            </div>
-        </div>
-        <div class="col-4">
-            <label for="docnumber">Número de documento </label>
-            <input type="text" id="docnumber" name="docnumber" #docnumber="ngModel" minlength="7" required [(ngModel)]="user.docnumber"><br>
-            <div *ngIf="docnumber.invalid && (docnumber.dirty || docnumber.touched)" class="validation">
-                <div *ngIf="docnumber.errors?.['required']"> El número de documento es requerido. </div>
-                <div *ngIf="docnumber.errors?.['minlength']"> El número de documento debe tener al menos 7 caracteres. </div>
-            </div>
-        </div>
-        <div class="col-4">
-            <label for="email">Correo electrónico </label>
-            <input type="email" id="email" name="email" #email="ngModel" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required [(ngModel)]="user.email"><br>
-            <div *ngIf="email.invalid && (email.dirty || email.touched)" class="validation">
-                <div *ngIf="email.errors?.['required']"> El correo electrónico es requerido. </div>
-                <div *ngIf="email.errors?.['pattern']"> El correo electrónico no es válido. </div>
-            </div>
-        </div>
-    </div>
-    <br>
-    <h2>Información Laboral</h2>
-    <div class="row">
-        <div class="col-4">
-            <label for="idemployee">Id de empleado </label>
-            <input type="text" id="idemployee" name="idemployee" #idemployee="ngModel" required [(ngModel)]="user.idemployee"><br>
-            <div *ngIf="idemployee.invalid && (idemployee.dirty || idemployee.touched)" class="validation">
-                <div *ngIf="idemployee.errors?.['required']"> El id de empleado es requerido. </div>
-            </div>
-        </div>
-        <div class="col-4">
-            <label for="jobtitle">Cargo </label>
-            <select id="jobtitle" name="jobtitle" #jobtitle="ngModel" [(ngModel)]="user.jobtitle">
-                <option value="0" disabled selected hidden>Seleccione una opción</option>
-                <option value="1">Médico interno</option>
-                <option value="2">Médico especialista</option>
-                <option value="3">Radiólogo</option>
-                <option value="4">Enfermero</option>
-                <option value="5">Auxiliar</option>
-            </select>
-        </div>
-        <div class="col-4">
-            <label for="area">Área </label>
-            <select id="area" name="area" #area="ngModel" [(ngModel)]="user.area">
-                <option value="0" disabled selected hidden>Seleccione una opción</option>
-                <option value="1">Medicina interna</option>
-                <option value="2">Medicina general</option>
-                <option value="3">Radiología</option>
-                <option value="4">Enfermería</option>
-                <option value="5">Auxiliar</option>
-            </select>
-        </div>
-    </div>
-    <br>
-    <h2>Observaciones</h2>
-    <div class="row">
-        <div class="col-12">
-            <textarea id="observations" name="observations" cols="50" rows="5" #observations="ngModel" [(ngModel)]="user.observations"></textarea>
-        </div>
-    </div>
-    <br>
-    <div class="row">
-        <div class="col-12">
-            <button type="submit" class="btn btn-primary" [disabled]="newForm.invalid"><i class="fas fa-plus"></i> Añadir usuario</button>
-        </div>
-    </div>
-</form>
+    </form>
+</div>

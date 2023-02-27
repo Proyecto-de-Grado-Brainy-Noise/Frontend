@@ -1,23 +1,29 @@
 <h1>Usuarios</h1>
-<table class="table-hover table-striped">
-    <thead>
+<div class="card">
+    <div class="card-head">
+        Todos los usuarios registrados en el sistema son:
+    </div>
+    <table class="content-table">
+        <thead>
         <tr>
             <th>Id Empleado</th>
             <th>Nombre</th>
             <th>Correo</th>
             <th>Opciones</th>
         </tr>
-    </thead>
-    <tbody>
+        </thead>
+        <tbody>
         <tr *ngFor="let user of users">
-            <td>{{user.idemployee}}</td>
-            <td>{{user.name}}</td>
+            <td>{{user.idEmployee}}</td>
+            <td>{{user.name}} {{user.name2}} {{user.lastname}} {{user.lastname2}}</td>
             <td>{{user.email}}</td>
             <td>
-                <a [routerLink]="['/admin/edit-user', user.idemployee]"><i class="fas fa-edit" style="color: #F8CD00;"></i></a> 
+                <a [routerLink]="['/admin/edit-user', user.idemployee]"><i class="fas fa-edit" style="color: #F8CD00;"></i></a>
                 &nbsp;&nbsp;&nbsp;&nbsp;
-                <a [routerLink]="['/admin/delete-user', user.idemployee]"><i class="fas fa-trash-alt" style="color: #F8CD00;"></i></a>
+                <a (click)="showDeletePopUp()"><i class="fas fa-trash-alt" style="color: #F8CD00;"></i></a>
+                <app-pop-up *ngIf="showPopUp" [ngModel]="user"></app-pop-up>
             </td>
         </tr>
-    </tbody>
-</table>
+        </tbody>
+    </table>
+</div>

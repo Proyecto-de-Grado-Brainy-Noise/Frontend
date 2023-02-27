@@ -22,15 +22,19 @@ import { EditUserComponent } from './edit-user/edit-user.component';
 import {LoginComponent} from "./login/login.component";
 import {ResetPasswordComponent} from "./reset-password/reset-password.component";
 import {NewPasswordComponent} from "./new-password/new-password.component";
+import { PopUpComponent } from './pop-up/pop-up.component';
+import { PathsTableComponent } from './paths-table/paths-table.component';
+import { HttpClientModule } from '@angular/common/http';
+import {ToastrModule} from "ngx-toastr";
 
 const routes: Routes = [
-  { path: 'admin/upload-resonance', component: UploadResonanceComponent },
+  { path: 'upload-resonance', component: UploadResonanceComponent },
   { path: 'admin/history', component: HistoryComponent },
   { path: 'admin/new-user', component: NewUserComponent },
   { path: 'admin/search-user', component: SearchUserComponent },
   { path: 'admin/users', component: AllUsersComponent },
   { path: 'admin/edit-user/:idemployee', component: EditUserComponent },
-  { path: 'login/', component: LoginComponent },
+  { path: 'login', component: LoginComponent },
   { path: 'reset-password', component: ResetPasswordComponent },
   { path: 'new-password', component: NewPasswordComponent }
 ]
@@ -50,7 +54,9 @@ const routes: Routes = [
     EditUserComponent,
     LoginComponent,
     ResetPasswordComponent,
-    NewPasswordComponent
+    NewPasswordComponent,
+    PopUpComponent,
+    PathsTableComponent
   ],
   imports: [
     BrowserModule,
@@ -60,6 +66,9 @@ const routes: Routes = [
     ReactiveFormsModule,
     MatInputModule,
     MatIconModule,
+    HttpClientModule,
+    ToastrModule.forRoot(),
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

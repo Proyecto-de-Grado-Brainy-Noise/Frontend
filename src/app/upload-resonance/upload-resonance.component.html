@@ -26,16 +26,19 @@
                 </div>
 
                 <div class="input-field">
-                    <label>Ubicación de la Imagen</label>
+                    <label class="upload-image" for="file" > <i class="fal fa-upload"></i> Subir Imagen</label>
                     <input
                             type="file"
-                            class="custom-file"
                             id="file"
+                            (change)="onUploadImage({e : $event})"
                             formControlName="file"
                             [class.is-invalid]="analyticsForm.get('file')?.invalid"
                             required>
                 </div>
             </div>
+
+            <app-paths-table></app-paths-table>
+
             <div class="links">
                 <input type="submit" value="Analizar">
             </div>
