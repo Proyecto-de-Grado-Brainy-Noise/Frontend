@@ -11,8 +11,8 @@
                     <label>Primer nombre</label>
                     <input
                             type="text"
-                            id="firstname"
-                            formControlName="firstname"
+                            id="name"
+                            formControlName="name"
                             required>
                     <small style="color: darkred" *ngIf="invalidFirstname"> El nombre ingresado es inválido </small>
                 </div>
@@ -21,8 +21,8 @@
                     <label>Segundo nombre</label>
                     <input
                             type="text"
-                            id="middlename"
-                            formControlName="middlename"
+                            id="name2"
+                            formControlName="name2"
                             required>
                 </div>
 
@@ -30,9 +30,8 @@
                     <label>Primer apellido</label>
                     <input
                             type="text"
-                            id="lastname1"
-                            formControlName="lastname1"
-                            [class.is-invalid]="editUserForm.get('lastname1')?.invalid"
+                            id="lastname"
+                            formControlName="lastname"
                             required>
                     <small style="color: darkred" *ngIf="invalidLastname1"> El apellido ingresado es inválido </small>
                 </div>
@@ -75,9 +74,8 @@
                     <label>Número de documento</label>
                     <input
                             type="text"
-                            id="docnumber"
-                            formControlName="docnumber"
-                            [class.is-invalid]="editUserForm.get('docnumber')?.invalid"
+                            id="document"
+                            formControlName="document"
                             required>
                     <small style="color: darkred" *ngIf="invalidDocnumber"> El número de documento es inválido </small>
                 </div>
@@ -104,8 +102,8 @@
                     <label>Id de empleado</label>
                     <input
                             type="text"
-                            id="idemployee"
-                            formControlName="idemployee"
+                            id="idEmployee"
+                            formControlName="idEmployee"
                             required>
                     <small style="color: darkred" *ngIf="invalidIdemployee"> El ID es inválido </small>
                 </div>

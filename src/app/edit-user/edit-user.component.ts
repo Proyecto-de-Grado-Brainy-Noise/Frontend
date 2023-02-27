@@ -28,15 +28,15 @@ export class EditUserComponent implements OnInit {
   invalidRole = false;
 
   editUserForm: FormGroup = this.formBuilder.group({
-    firstname: ['', [Validators.required, Validators.minLength(3)]],
-    middlename: ['', []],
-    lastname1: ['', [Validators.required, Validators.minLength(3)]],
+    name: ['', [Validators.required, Validators.minLength(3)]],
+    name2: ['', []],
+    lastname: ['', [Validators.required, Validators.minLength(3)]],
     lastname2: ['', []],
     birthdate: ['', [Validators.required]],
     doctype: ['', [Validators.required]],
-    docnumber: ['', [Validators.required, Validators.minLength(7)]],
+    document: ['', [Validators.required, Validators.minLength(7)]],
     email: ['', [Validators.required, Validators.email]],
-    idemployee: ['', [Validators.required, Validators.minLength(5)]],
+    idEmployee: ['', [Validators.required, Validators.minLength(5)]],
     jobtitle: ['', [Validators.required]],
     area: ['', [Validators.required]],
     role: ['', [Validators.required]],
@@ -57,15 +57,15 @@ export class EditUserComponent implements OnInit {
         (response: HttpResponse<any>) => {
           if (response.status == 200){
             this.user = Object.values(response.body.message[0]);
-            this.editUserForm.get("firstname")?.setValue(this.user[2]);
-            this.editUserForm.get("middlename")?.setValue(this.user[3]);
-            this.editUserForm.get("lastname1")?.setValue(this.user[4]);
+            this.editUserForm.get("name")?.setValue(this.user[2]);
+            this.editUserForm.get("name2")?.setValue(this.user[3]);
+            this.editUserForm.get("lastname")?.setValue(this.user[4]);
             this.editUserForm.get("lastname2")?.setValue(this.user[5]);
             this.editUserForm.get("birthdate")?.setValue(this.user[8]);
             this.editUserForm.get("doctype")?.setValue(this.user[6]);
-            this.editUserForm.get("docnumber")?.setValue(this.user[7]);
+            this.editUserForm.get("document")?.setValue(this.user[7]);
             this.editUserForm.get("email")?.setValue(this.user[1]);
-            this.editUserForm.get("idemployee")?.setValue(this.user[9]);
+            this.editUserForm.get("idEmployee")?.setValue(this.user[9]);
             this.editUserForm.get("jobtitle")?.setValue(this.user[10]);
             this.editUserForm.get("area")?.setValue(this.user[11]);
             this.editUserForm.get("role")?.setValue(this.user[0]);
@@ -96,6 +96,7 @@ export class EditUserComponent implements OnInit {
           (response: HttpResponse<any>) => {
             if (response.status == 200){
               this.toastr.success(response.body.message);
+              this.router.navigate(["admin/users"]);
             } else {
               this.toastr.error(response.body.message);
             }
