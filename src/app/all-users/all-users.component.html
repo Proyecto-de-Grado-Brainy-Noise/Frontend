@@ -6,9 +6,9 @@
     <table class="content-table">
         <thead>
         <tr>
-            <th>Id Empleado</th>
-            <th>Nombre</th>
-            <th>Correo</th>
+            <th class="order-header" (click)="sortColumn('idEmployee')">Id Empleado</th>
+            <th class="order-header" (click)="sortColumn('name')">Nombre</th>
+            <th class="order-header" (click)="sortColumn('email')">Correo</th>
             <th>Opciones</th>
         </tr>
         </thead>
@@ -18,9 +18,9 @@
             <td>{{user.name}} {{user.name2}} {{user.lastname}} {{user.lastname2}}</td>
             <td>{{user.email}}</td>
             <td>
-                <a [routerLink]="['/admin/edit-user', user.idEmployee]"><i class="fas fa-edit" style="color: #F8CD00;"></i></a>
+                <a [routerLink]="['/home/admin/edit-user', user.idEmployee]"><i class="fas fa-edit table-link"></i></a>
                 &nbsp;&nbsp;&nbsp;&nbsp;
-                <a (click)="showDeletePopUp(user.idEmployee)"><i class="fas fa-trash-alt" style="color: #F8CD00;"></i></a>
+                <a class="table-link" (click)="showDeletePopUp(user)"><i class="fas fa-trash-alt table-link"></i></a>
             </td>
         </tr>
         </tbody>

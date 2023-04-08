@@ -11,8 +11,9 @@ import {Router} from "@angular/router";
 export class AllUsersComponent implements OnInit {
 
   showPopUp = false;
+  isOrdered = false;
   users: any[] = [];
-  idDelete : any;
+  userDelete : any;
   constructor(
       private http: HttpClient,
       private toastr: ToastrService,
@@ -32,9 +33,23 @@ export class AllUsersComponent implements OnInit {
     );
   }
 
-  showDeletePopUp(idEmployee : any):void{
+  sortColumn(column: string) {
+      this.users.sort((a, b) => {
+          if (a[column] > b[column]) {
+              return this.isOrdered ? -1 : 1;
+          } else if (a[column] < b[column]) {
+              return this.isOrdered ? 1 : -1;
+          } else {
+              return 0;
+          }
+      });
+
+      this.isOrdered = !this.isOrdered;
+  }
+
+  showDeletePopUp(user : any):void{
     this.showPopUp = true;
-    this.idDelete = idEmployee;
+    this.userDelete = user;
   }
 
   receiveDenial({$event}: { $event: any }){
@@ -43,11 +58,8 @@ export class AllUsersComponent implements OnInit {
 
   receiveAcceptance({$event}: { $event: any }){
       if($event){
-          let request = {
-            "idEmployee" : this.idDelete
-          };
 
-          this.http.post('http://localhost:9000/api/admin/deleteUser', request, { observe: 'response' }).subscribe(
+          this.http.post('http://localhost:9000/api/admin/deleteUser', this.userDelete, { observe: 'response' }).subscribe(
               (response: HttpResponse<any>) => {
                   if (response.status == 200){
                       this.showPopUp = false;

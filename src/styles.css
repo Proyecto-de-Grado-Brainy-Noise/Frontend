@@ -154,7 +154,7 @@ input[type="submit"]{
 
 .content-table {
     border-collapse: collapse;
-    margin: 25px 0;
+    margin: 25px 25px 25px 25px;
     font-size: 0.9em;
     min-width: 400px;
     border-radius: 5px 5px 0 0;
@@ -196,4 +196,21 @@ input[type="submit"]:active{
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+.order-header{
+    cursor: pointer
+}
+
+.order-header:hover{
+    color: #F8CD00;
+}
+
+.table-link{
+    cursor: pointer;
+    color: #F8CD00;
+}
+
+.table-link:hover{
+    color: #074E9F;
 }
