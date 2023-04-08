@@ -1,19 +1,22 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {ActivatedRoute, Router} from "@angular/router";
 import {HttpClient, HttpResponse} from "@angular/common/http";
 import {ToastrService} from "ngx-toastr";
 
 @Component({
-  selector: 'app-edit-user',
-  templateUrl: './edit-user.component.html',
-  styleUrls: ['./edit-user.component.css']
+  selector: 'app-show-found-user',
+  templateUrl: './show-found-user.component.html',
+  styleUrls: ['./show-found-user.component.css']
 })
-export class EditUserComponent implements OnInit {
+export class ShowFoundUserComponent implements OnInit{
   idEmployee = this.route.snapshot.paramMap.get('idEmployee');
+  showPopUp = false;
+
   request = {
     "idEmployee" : this.idEmployee
   };
+
   user : any;
 
   invalidFirstname = false;
@@ -44,13 +47,12 @@ export class EditUserComponent implements OnInit {
   }, {updateOn: 'submit'});
 
   constructor(
-    private route: ActivatedRoute,
-    private router: Router,
-    private formBuilder: FormBuilder,
-    private http: HttpClient,
-    private toastr: ToastrService
-    ) { }
-
+      private route: ActivatedRoute,
+      private router: Router,
+      private formBuilder: FormBuilder,
+      private http: HttpClient,
+      private toastr: ToastrService
+  ) { }
 
   ngOnInit(): void {
     this.http.post('http://localhost:9000/api/admin/searchUser', this.request, { observe: 'response' }).subscribe(
@@ -64,11 +66,11 @@ export class EditUserComponent implements OnInit {
             this.editUserForm.get("birthdate")?.setValue(this.user[8]);
             this.editUserForm.get("doctype")?.setValue(this.user[6]);
             this.editUserForm.get("document")?.setValue(this.user[7]);
-            this.editUserForm.get("email")?.setValue(this.user[0]);
+            this.editUserForm.get("email")?.setValue(this.user[1]);
             this.editUserForm.get("idEmployee")?.setValue(this.user[9]);
             this.editUserForm.get("jobtitle")?.setValue(this.user[10]);
             this.editUserForm.get("area")?.setValue(this.user[11]);
-            this.editUserForm.get("role")?.setValue(this.user[1]);
+            this.editUserForm.get("role")?.setValue(this.user[0]);
             this.editUserForm.get("observations")?.setValue(this.user[12]);
           }
         },
@@ -77,6 +79,39 @@ export class EditUserComponent implements OnInit {
         }
     );
     (<HTMLInputElement>document.getElementById("birthdate")).setAttribute("max", new Date().toISOString().split("T")[0]);
+  }
+
+  showDeletePopUp():void{
+    this.showPopUp = true;
+  }
+
+  receiveDenial({$event}: { $event: any }){
+    this.showPopUp = $event;
+  }
+
+  receiveAcceptance({$event}: { $event: any }){
+    if($event){
+      let request = {
+        "idEmployee" : this.idEmployee
+      };
+
+      this.http.post('http://localhost:9000/api/admin/deleteUser', request, { observe: 'response' }).subscribe(
+          (response: HttpResponse<any>) => {
+            if (response.status == 200){
+              this.showPopUp = false;
+              this.toastr.success("Se ha eliminado exitosamente");
+              this.router.navigate(["admin/users"]);
+            } else {
+              this.showPopUp = false;
+              this.toastr.error(response.body.message);
+            }
+          },
+          error => {
+            this.showPopUp = false;
+            this.toastr.error(error.error.message);
+          }
+      );
+    }
   }
 
   onEdit() {

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 
 @Component({
   selector: 'app-pop-up',
@@ -6,7 +6,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./pop-up.component.css']
 })
 export class PopUpComponent {
-  onConfirm(){
+  @Output() denialEvent = new EventEmitter<boolean>();
+  @Output() confirmEvent = new EventEmitter<boolean>();
 
+  onDeny(){
+    this.denialEvent.emit(false);
+  }
+
+  onConfirm(){
+    this.confirmEvent.emit(true);
   }
 }

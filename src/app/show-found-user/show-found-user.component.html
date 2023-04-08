@@ -1,9 +1,17 @@
 <h1>Editar Usuario</h1>
 
 <div class="card">
+    <app-pop-up (denialEvent)="receiveDenial({$event : $event})"
+                (confirmEvent)="receiveAcceptance({$event : $event})"
+                *ngIf="showPopUp"></app-pop-up>
     <form [formGroup]="editUserForm" (submit)="onEdit()" #localForm="ngForm">
         <div class="card-head">
-            Información Personal
+            <div style="width: 95%; display: inline-block">
+                Información Personal
+            </div>
+            <div style="width: 5%; text-align:right ;display: inline-block">
+                <a (click)="showDeletePopUp()"><i class="fas fa-trash-alt" style="color: #F8CD00;"></i></a>
+            </div>
         </div>
         <div class="card-body">
             <div class="inputs">
@@ -61,7 +69,7 @@
 
                 <div class="input-field">
                     <label>Tipo de documento</label>
-                    <select id="doctype" name="doctype" formControlName="doctype">
+                    <select id="doctype" name="doctype" formControlName="doctype" required>
                         <option value="0" disabled selected hidden>Seleccione una opción</option>
                         <option value="1">Cédula de ciudadanía</option>
                         <option value="2">Cédula de extranjería</option>
@@ -76,7 +84,7 @@
                             type="text"
                             id="document"
                             formControlName="document"
-                            readonly>
+                            required>
                     <small style="color: darkred" *ngIf="invalidDocnumber"> El número de documento es inválido </small>
                 </div>
 
@@ -104,7 +112,7 @@
                             type="text"
                             id="idEmployee"
                             formControlName="idEmployee"
-                            readonly>
+                            required>
                     <small style="color: darkred" *ngIf="invalidIdemployee"> El ID es inválido </small>
                 </div>
 

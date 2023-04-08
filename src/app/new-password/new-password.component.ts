@@ -7,6 +7,9 @@ import { FormBuilder, FormGroup, FormControl, Validators } from "@angular/forms"
   styleUrls: ['./new-password.component.css']
 })
 export class NewPasswordComponent implements OnInit{
+  logged = false;
+  @Output() loggedEvent = new EventEmitter<boolean>();
+
   newPasswordForm: FormGroup = this.formBuilder.group({
     password: ['', [Validators.required, Validators.minLength(8)]],
     confirmPassword: ['', [Validators.required, Validators.minLength(8)]]
@@ -16,10 +19,13 @@ export class NewPasswordComponent implements OnInit{
   invalidConfirmPassword = false;
 
   constructor(private formBuilder: FormBuilder) {
+    console.log("Entre");
   }
 
   ngOnInit(): void {
-
+    console.log("Entre");
+    this.logged = true;
+    this.loggedEvent.emit(this.logged);
   }
 
   onUpdate(): any{

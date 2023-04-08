@@ -26,8 +26,9 @@
                 </div>
 
                 <div class="input-field">
-                    <label class="upload-image" for="file" > <i class="fal fa-upload"></i> Subir Imagen</label>
+                    <label for="file" > <i class="fal fa-upload"></i> Subir Imagen</label>
                     <input
+                            class="custom-file"
                             type="file"
                             id="file"
                             (change)="onUploadImage({e : $event})"
@@ -36,8 +37,6 @@
                             required>
                 </div>
             </div>
-
-            <app-paths-table></app-paths-table>
 
             <div class="links">
                 <input type="submit" value="Analizar">

@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PathsTableComponent } from './paths-table.component';
+import { AllUsersComponent } from './all-users.component';
 
-describe('PathsTableComponent', () => {
-  let component: PathsTableComponent;
-  let fixture: ComponentFixture<PathsTableComponent>;
+describe('AllUsersComponent', () => {
+  let component: AllUsersComponent;
+  let fixture: ComponentFixture<AllUsersComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PathsTableComponent ]
+      declarations: [ AllUsersComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(PathsTableComponent);
+    fixture = TestBed.createComponent(AllUsersComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

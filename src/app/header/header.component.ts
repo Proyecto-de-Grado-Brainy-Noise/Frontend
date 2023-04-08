@@ -13,8 +13,10 @@ export class HeaderComponent implements OnInit{
   @Input() screenWidth = 0;
   @Output() logoutEvent = new EventEmitter<boolean>();
 
+  name = "";
+
   ngOnInit(): void {
-    
+    this.name = sessionStorage.getItem("name")!;
   }
 
   getHeadClass(): string {

@@ -10,7 +10,6 @@ import {ReactiveFormsModule} from "@angular/forms";
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { SideNavComponent } from './side-nav/side-nav.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { BodyComponent } from './body/body.component';
 import { UploadResonanceComponent } from './upload-resonance/upload-resonance.component';
 import { HistoryComponent } from './history/history.component';
@@ -23,20 +22,25 @@ import {LoginComponent} from "./login/login.component";
 import {ResetPasswordComponent} from "./reset-password/reset-password.component";
 import {NewPasswordComponent} from "./new-password/new-password.component";
 import { PopUpComponent } from './pop-up/pop-up.component';
-import { PathsTableComponent } from './paths-table/paths-table.component';
-import { HttpClientModule } from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {ToastrModule} from "ngx-toastr";
+import { ShowFoundUserComponent } from './show-found-user/show-found-user.component';
+import { TokenInterceptor } from "./interceptors/token.interceptor";
 
 const routes: Routes = [
-  { path: 'upload-resonance', component: UploadResonanceComponent },
-  { path: 'admin/history', component: HistoryComponent },
-  { path: 'admin/new-user', component: NewUserComponent },
-  { path: 'admin/search-user', component: SearchUserComponent },
-  { path: 'admin/users', component: AllUsersComponent },
-  { path: 'admin/edit-user/:idEmployee', component: EditUserComponent },
+  { path: '', component:LoginComponent},
   { path: 'login', component: LoginComponent },
   { path: 'reset-password', component: ResetPasswordComponent },
-  { path: 'new-password', component: NewPasswordComponent }
+  { path: 'new-password/:email', component: NewPasswordComponent },
+  { path: 'home', component: BodyComponent, children: [
+      { path: 'upload-resonance', component: UploadResonanceComponent },
+      { path: 'admin/history', component: HistoryComponent },
+      { path: 'admin/new-user', component: NewUserComponent },
+      { path: 'admin/search-user', component: SearchUserComponent },
+      { path: 'admin/users', component: AllUsersComponent },
+      { path: 'admin/edit-user/:idEmployee', component: EditUserComponent },
+      { path: 'admin/found-user/:idEmployee', component: ShowFoundUserComponent }
+  ]}
 ]
 
 @NgModule({
@@ -44,7 +48,6 @@ const routes: Routes = [
     AppComponent,
     HeaderComponent,
     SideNavComponent,
-    DashboardComponent,
     BodyComponent,
     UploadResonanceComponent,
     HistoryComponent,
@@ -56,7 +59,7 @@ const routes: Routes = [
     ResetPasswordComponent,
     NewPasswordComponent,
     PopUpComponent,
-    PathsTableComponent
+    ShowFoundUserComponent
   ],
   imports: [
     BrowserModule,
@@ -70,7 +73,9 @@ const routes: Routes = [
     ToastrModule.forRoot(),
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

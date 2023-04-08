@@ -1,3 +1,10 @@
-<div class="body" [ngClass]="getBodyClass()">
-    <router-outlet></router-outlet>
+<div>
+    <app-side-nav (onToggleSideNav)="onToggleSideNav($event)"></app-side-nav>
+    <app-header
+            [collapsed] = "isSideNavCollapsed"
+            [screenWidth]= "screenWidth"
+    ></app-header>
+    <div class="body" [ngClass]="getBodyClass()">
+        <router-outlet></router-outlet>
+    </div>
 </div>
