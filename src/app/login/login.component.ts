@@ -21,12 +21,6 @@ interface TokenPayload{
 export class LoginComponent implements OnInit{
 
   reset = false;
-  logged = false;
-  newPassword = false;
-
-  @Output() loggedEvent = new EventEmitter<boolean>();
-  @Output() resetEvent = new EventEmitter<boolean>();
-  @Output() newPasswordEvent = new EventEmitter<boolean>();
 
   loginForm: FormGroup = this.formBuilder.group({
     email: ['', [Validators.required, Validators.email]],
@@ -49,8 +43,7 @@ export class LoginComponent implements OnInit{
   }
 
   trueReset():any{
-    this.reset = true;
-    this.resetEvent.emit(this.reset);
+    this.router.navigate(["reset-password"]);
   }
 
   onLogin(): any{
