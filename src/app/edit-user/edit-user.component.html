@@ -7,49 +7,48 @@
         </div>
         <div class="card-body">
             <div class="inputs">
-                <div class="input-field">
-                    <label>Primer nombre</label>
+                <div class="input-field stylish">
                     <input
                             type="text"
                             id="name"
                             formControlName="name"
                             required>
                     <small style="color: darkred" *ngIf="invalidFirstname"> El nombre ingresado es inválido </small>
+                    <span class="placeholder">Primer nombre</span>
                 </div>
 
-                <div class="input-field">
-                    <label>Segundo nombre</label>
+                <div class="input-field stylish">
                     <input
                             type="text"
                             id="name2"
                             formControlName="name2"
                             required>
+                    <span class="placeholder">Segundo nombre</span>
                 </div>
 
-                <div class="input-field">
-                    <label>Primer apellido</label>
+                <div class="input-field stylish">
                     <input
                             type="text"
                             id="lastname"
                             formControlName="lastname"
                             required>
                     <small style="color: darkred" *ngIf="invalidLastname1"> El apellido ingresado es inválido </small>
+                    <span class="placeholder">Primer apellido</span>
                 </div>
 
-                <div class="input-field">
-                    <label>Segundo apellido</label>
+                <div class="input-field stylish">
                     <input
                             type="text"
                             id="lastname2"
                             formControlName="lastname2"
                             required>
+                    <span class="placeholder">Segundo apellido</span>
                 </div>
             </div>
 
             <div class="inputs">
 
-                <div class="input-field">
-                    <label>Fecha de nacimiento</label>
+                <div class="input-field stylish">
                     <input
                             type="date"
                             id="birthdate"
@@ -57,10 +56,10 @@
                             [class.is-invalid]="editUserForm.get('birthdate')?.invalid"
                             required>
                     <small style="color: darkred" *ngIf="invalidBirthdate"> El fecha de nacimiento es requerida </small>
+                    <span class="placeholder">Fecha de nacimiento</span>
                 </div>
 
-                <div class="input-field">
-                    <label>Tipo de documento</label>
+                <div class="input-field stylish">
                     <select id="doctype" name="doctype" formControlName="doctype">
                         <option value="0" disabled selected hidden>Seleccione una opción</option>
                         <option value="1">Cédula de ciudadanía</option>
@@ -68,20 +67,21 @@
                         <option value="3">Pasaporte</option>
                     </select>
                     <small style="color: darkred" *ngIf="invalidDoctype"> Por favor seleccione una opción </small>
+                    <span class="placeholder">Tipo de documento</span>
                 </div>
 
-                <div class="input-field">
-                    <label>Número de documento</label>
+                <div class="input-field stylish">
                     <input
                             type="text"
                             id="document"
                             formControlName="document"
+                            required
                             readonly>
                     <small style="color: darkred" *ngIf="invalidDocnumber"> El número de documento es inválido </small>
+                    <span class="placeholder">Número de documento</span>
                 </div>
 
-                <div class="input-field">
-                    <label>Correo electrónico</label>
+                <div class="input-field stylish">
                     <input
                             type="email"
                             id="email"
@@ -89,6 +89,7 @@
                             [class.is-invalid]="editUserForm.get('email')?.invalid"
                             required>
                     <small style="color: darkred" *ngIf="invalidEmail"> El correo electrónico inválido es inválido </small>
+                    <span class="placeholder">Correo electrónico</span>
                 </div>
             </div>
         </div>
@@ -98,18 +99,17 @@
         </div>
         <div class="card-body">
             <div class="inputs">
-                <div class="input-field">
-                    <label>Id de empleado</label>
+                <div class="input-field stylish">
                     <input
                             type="text"
                             id="idEmployee"
                             formControlName="idEmployee"
                             readonly>
                     <small style="color: darkred" *ngIf="invalidIdemployee"> El ID es inválido </small>
+                    <span class="placeholder">Id de empleado</span>
                 </div>
 
-                <div class="input-field">
-                    <label>Cargo</label>
+                <div class="input-field stylish">
                     <select id="jobtitle"
                             name="jobtitle"
                             formControlName="jobtitle"
@@ -122,10 +122,10 @@
                         <option value="Auxiliar">Auxiliar</option>
                     </select>
                     <small style="color: darkred" *ngIf="invalidJobtitle"> Por favor seleccione una opción </small>
+                    <span class="placeholder">Cargo</span>
                 </div>
 
-                <div class="input-field">
-                    <label>Área</label>
+                <div class="input-field stylish">
                     <select id="area"
                             name="area"
                             formControlName="area"
@@ -138,9 +138,9 @@
                         <option value="Auxiliar">Auxiliar</option>
                     </select>
                     <small style="color: darkred" *ngIf="invalidArea"> Por favor seleccione una opción </small>
+                    <span class="placeholder">Área</span>
                 </div>
-                <div class="input-field">
-                    <label>Rol</label>
+                <div class="input-field stylish">
                     <select id="role"
                             name="role"
                             formControlName="role"
@@ -150,12 +150,13 @@
                         <option value="A">Administrador</option>
                     </select>
                     <small style="color: darkred" *ngIf="invalidRole"> Por favor seleccione una opción </small>
+                    <span class="placeholder">Rol</span>
                 </div>
             </div>
             <div class="inputs">
-                <div class="input-field">
-                    <label>Observaciones</label>
-                    <textarea id="observations" name="observations" formControlName="observations" cols="50" rows="5"></textarea>
+                <div class="input-field stylish">
+                    <textarea id="observations" name="observations" formControlName="observations" cols="50" rows="5" required></textarea>
+                    <span class="placeholder">Observaciones</span>
                 </div>
             </div>
             <div class="links">

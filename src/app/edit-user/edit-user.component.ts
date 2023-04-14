@@ -96,7 +96,7 @@ export class EditUserComponent implements OnInit {
           (response: HttpResponse<any>) => {
             if (response.status == 200){
               this.toastr.success(response.body.message);
-              this.router.navigate(["admin/users"]);
+              this.router.navigate(["home/admin/users"]);
             } else {
               this.toastr.error(response.body.message);
             }
