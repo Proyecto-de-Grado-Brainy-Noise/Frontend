@@ -63,6 +63,16 @@ h2 {
 text-danger{
     color: darkred;
 }
+.popup-container{
+    width: 40%;
+    box-shadow: 5px 5px 4px #ccc;
+    border-radius: 10px;
+    background-color: #E7E7E7;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    z-index: 3;
+}
 
 .inputs{
     display: flex;
@@ -95,6 +105,20 @@ text-danger{
     width: 100%;
     font-size: 14px;
     z-index: 2;
+}
+
+.input-field input:read-only{
+    border: 2px solid #ddd;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding: 12px;
+    border-radius: 50px;
+    outline: none;
+    width: 100%;
+    font-size: 14px;
+    z-index: 2;
+    background: #e3e1e1;
 }
 
 .input-field textarea{
@@ -131,6 +155,7 @@ text-danger{
     transform: translateY(-50%);
     color: #08468d;
     z-index: 1;
+    background-color: transparent;
     transition: top 0.3s ease, font-size 0.3s ease, color 0.3s ease;
 }
 

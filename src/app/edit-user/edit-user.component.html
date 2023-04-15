@@ -60,13 +60,13 @@
                 </div>
 
                 <div class="input-field stylish">
-                    <select id="doctype" name="doctype" formControlName="doctype">
-                        <option value="0" disabled selected hidden>Seleccione una opción</option>
-                        <option value="1">Cédula de ciudadanía</option>
-                        <option value="2">Cédula de extranjería</option>
-                        <option value="3">Pasaporte</option>
-                    </select>
-                    <small style="color: darkred" *ngIf="invalidDoctype"> Por favor seleccione una opción </small>
+                    <input
+                            type="text"
+                            id="doctype"
+                            formControlName="doctype"
+                            [class.is-invalid]="editUserForm.get('doctype')?.invalid"
+                            readonly
+                            required>
                     <span class="placeholder">Tipo de documento</span>
                 </div>
 
@@ -77,7 +77,6 @@
                             formControlName="document"
                             required
                             readonly>
-                    <small style="color: darkred" *ngIf="invalidDocnumber"> El número de documento es inválido </small>
                     <span class="placeholder">Número de documento</span>
                 </div>
 
@@ -87,8 +86,8 @@
                             id="email"
                             formControlName="email"
                             [class.is-invalid]="editUserForm.get('email')?.invalid"
+                            readonly
                             required>
-                    <small style="color: darkred" *ngIf="invalidEmail"> El correo electrónico inválido es inválido </small>
                     <span class="placeholder">Correo electrónico</span>
                 </div>
             </div>

@@ -39,7 +39,8 @@ const routes: Routes = [
       { path: 'admin/search-user', component: SearchUserComponent },
       { path: 'admin/users', component: AllUsersComponent },
       { path: 'admin/edit-user/:idEmployee', component: EditUserComponent },
-      { path: 'admin/found-user/:idEmployee', component: ShowFoundUserComponent }
+      { path: 'admin/found-user/:idEmployee', component: ShowFoundUserComponent },
+      { path: 'admin/found-user/:doctype/:document', component: ShowFoundUserComponent }
   ]}
 ]
 

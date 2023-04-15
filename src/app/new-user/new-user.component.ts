@@ -63,11 +63,11 @@ export class NewUserComponent implements OnInit {
     this.invalidRole = !!this.newUserForm.get('role')?.invalid;
 
     if(!this.invalidFirstname && !this.invalidLastname1 && !this.invalidBirthdate && !this.invalidDocnumber && !this.invalidDoctype && !this.invalidEmail && !this.invalidIdemployee && !this.invalidJobtitle && !this.invalidArea && !this.invalidRole){
-      this.http.post('http://localhost:9000/api/admin/saveUser', this.newUserForm.value, { observe: 'response' }).subscribe(
+      this.http.post('http://localhost:9000/api/auth/register', this.newUserForm.value, { observe: 'response' }).subscribe(
           (response: HttpResponse<any>) => {
             if (response.status == 200){
               this.toastr.success(response.body.message);
-              this.router.navigate(["admin/users"]);
+              this.router.navigate(["home/admin/users"]);
             } else {
               this.toastr.error(response.body.message);
             }

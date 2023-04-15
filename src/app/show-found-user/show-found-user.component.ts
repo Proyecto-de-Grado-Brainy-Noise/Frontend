@@ -11,10 +11,14 @@ import {ToastrService} from "ngx-toastr";
 })
 export class ShowFoundUserComponent implements OnInit{
   idEmployee = this.route.snapshot.paramMap.get('idEmployee');
+  doctype = this.route.snapshot.paramMap.get('doctype');
+  document = this.route.snapshot.paramMap.get('document');
   showPopUp = false;
 
   request = {
-    "idEmployee" : this.idEmployee
+    "idEmployee" : this.idEmployee,
+    "document" : this.document,
+    "doctype" : this.doctype
   };
 
   user : any;
@@ -64,14 +68,21 @@ export class ShowFoundUserComponent implements OnInit{
             this.editUserForm.get("lastname")?.setValue(this.user[4]);
             this.editUserForm.get("lastname2")?.setValue(this.user[5]);
             this.editUserForm.get("birthdate")?.setValue(this.user[8]);
-            this.editUserForm.get("doctype")?.setValue(this.user[6]);
             this.editUserForm.get("document")?.setValue(this.user[7]);
-            this.editUserForm.get("email")?.setValue(this.user[1]);
+            this.editUserForm.get("email")?.setValue(this.user[0]);
             this.editUserForm.get("idEmployee")?.setValue(this.user[9]);
             this.editUserForm.get("jobtitle")?.setValue(this.user[10]);
             this.editUserForm.get("area")?.setValue(this.user[11]);
-            this.editUserForm.get("role")?.setValue(this.user[0]);
+            this.editUserForm.get("role")?.setValue(this.user[1]);
             this.editUserForm.get("observations")?.setValue(this.user[12]);
+
+            if(this.user[6]==1){
+              this.editUserForm.get("doctype")?.setValue("Cédula de ciudadanía");
+            } else if(this.user[6]==2){
+              this.editUserForm.get("doctype")?.setValue("Cédula de extranjería");
+            } else {
+              this.editUserForm.get("doctype")?.setValue("Pasaport");
+            }
           }
         },
         error => {
@@ -95,12 +106,12 @@ export class ShowFoundUserComponent implements OnInit{
         "idEmployee" : this.idEmployee
       };
 
-      this.http.post('http://localhost:9000/api/admin/deleteUser', request, { observe: 'response' }).subscribe(
+      this.http.post('http://localhost:9000/api/admin/deleteUser', this.editUserForm.value, { observe: 'response' }).subscribe(
           (response: HttpResponse<any>) => {
             if (response.status == 200){
               this.showPopUp = false;
               this.toastr.success("Se ha eliminado exitosamente");
-              this.router.navigate(["admin/users"]);
+              this.router.navigate(["home/admin/users"]);
             } else {
               this.showPopUp = false;
               this.toastr.error(response.body.message);
@@ -131,7 +142,7 @@ export class ShowFoundUserComponent implements OnInit{
           (response: HttpResponse<any>) => {
             if (response.status == 200){
               this.toastr.success(response.body.message);
-              this.router.navigate(["admin/users"]);
+              this.router.navigate(["home/admin/users"]);
             } else {
               this.toastr.error(response.body.message);
             }

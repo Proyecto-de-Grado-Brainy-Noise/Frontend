@@ -62,7 +62,6 @@ export class EditUserComponent implements OnInit {
             this.editUserForm.get("lastname")?.setValue(this.user[4]);
             this.editUserForm.get("lastname2")?.setValue(this.user[5]);
             this.editUserForm.get("birthdate")?.setValue(this.user[8]);
-            this.editUserForm.get("doctype")?.setValue(this.user[6]);
             this.editUserForm.get("document")?.setValue(this.user[7]);
             this.editUserForm.get("email")?.setValue(this.user[0]);
             this.editUserForm.get("idEmployee")?.setValue(this.user[9]);
@@ -70,6 +69,14 @@ export class EditUserComponent implements OnInit {
             this.editUserForm.get("area")?.setValue(this.user[11]);
             this.editUserForm.get("role")?.setValue(this.user[1]);
             this.editUserForm.get("observations")?.setValue(this.user[12]);
+
+            if(this.user[6]==1){
+              this.editUserForm.get("doctype")?.setValue("Cédula de ciudadanía");
+            } else if(this.user[6]==2){
+              this.editUserForm.get("doctype")?.setValue("Cédula de extranjería");
+            } else {
+              this.editUserForm.get("doctype")?.setValue("Pasaport");
+            }
           }
         },
         error => {

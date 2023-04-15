@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {HttpClient, HttpResponse} from "@angular/common/http";
+import {ToastrService} from "ngx-toastr";
 @Component({
   selector: 'app-search-user',
   templateUrl: './search-user.component.html',
@@ -21,7 +22,8 @@ export class SearchUserComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private formBuilder: FormBuilder,
-    private http: HttpClient
+    private http: HttpClient,
+    private toastr: ToastrService
   ) {  }
 
   ngOnInit(): void {
@@ -35,9 +37,14 @@ export class SearchUserComponent implements OnInit {
     this.http.post('http://localhost:9000/api/admin/searchUser', request, { observe: 'response' }).subscribe(
         (response: HttpResponse<any>) => {
           if (response.status == 200){
-            let path = "admin/found-user/"+this.searchIDForm.value.idEmployee;
-            this.router.navigate([path]);
+            if (response.body.message[0] != null){
+              let path = "/home/admin/found-user/"+this.searchIDForm.value.idEmployee;
+              this.router.navigate([path]);
+            } else {
+              this.toastr.error("No se encontró el usuario con ID " + this.searchIDForm.value.idEmployee);
+            }
           } else {
+            this.toastr.error(response.body.message);
           }
         },
         error => {
@@ -47,6 +54,28 @@ export class SearchUserComponent implements OnInit {
   }
 
   onSearchDocument () {
-    this.router.navigate(['/admin/users']);
+
+    let request = {
+      "document" : this.searchDocumentForm.value.document,
+      "doctype" : this.searchDocumentForm.value.doctype
+    };
+
+    this.http.post('http://localhost:9000/api/admin/searchUser', request, { observe: 'response' }).subscribe(
+        (response: HttpResponse<any>) => {
+          if (response.status == 200){
+            if (response.body.message[0] != null){
+              let path = "/home/admin/found-user/"+this.searchDocumentForm.value.doctype+"/"+this.searchDocumentForm.value.document;
+              this.router.navigate([path]);
+            } else {
+              this.toastr.error("No se encontró el usuario con documento " + this.searchDocumentForm.value.document);
+            }
+          } else {
+            this.toastr.error(response.body.message);
+          }
+        },
+        error => {
+
+        }
+    );
   }
 }
