@@ -1,41 +1,30 @@
+<ngx-ui-loader fgsColor="#074E9F" text="Cargando..."></ngx-ui-loader>
 <h1>Nueva Consulta</h1>
 <div class="card">
     <div class="card-head">
         Especificaciones de la Resonancia
     </div>
     <div class="card-body">
-        <form [formGroup]="analyticsForm" (submit)="onAnalyze()" #localForm="ngForm">
+        <form (submit)="onAnalyze()" #localForm="ngForm">
             <div class="inputs">
-                <div class="input-field">
-                    <label>ID de Resonancia </label>
+                <div class="input-field stylish" style="width: calc(100% / 2 - 30px);">
                     <input
-                            type="text"
-                            id="id"
-                            formControlName="id"
-                            [class.is-invalid]="analyticsForm.get('id')?.invalid"
+                            type="file"
+                            id="imageFile"
+                            (change)="onUploadImage({e : $event})"
                             required>
-                </div>
-                <div class="input-field">
-                    <label>Fecha de Consulta</label>
-                    <input
-                            type="date"
-                            id="date"
-                            formControlName="date"
-                            [class.is-invalid]="analyticsForm.get('date')?.invalid"
-                            required>
+                    <span class="placeholder"><i class="fal fa-upload"></i>  Subir Imagen</span>
                 </div>
 
-                <div class="input-field">
-                    <label for="file" > <i class="fal fa-upload"></i> Subir Imagen</label>
+                <div class="input-field stylish" style="width: calc(100% / 2 - 30px);">
                     <input
-                            class="custom-file"
                             type="file"
-                            id="file"
-                            (change)="onUploadImage({e : $event})"
-                            formControlName="file"
-                            [class.is-invalid]="analyticsForm.get('file')?.invalid"
+                            id="metadataFile"
+                            (change)="onUploadMetadata({e : $event})"
                             required>
+                    <span class="placeholder"><i class="fal fa-upload"></i>  Subir Metadata</span>
                 </div>
+
             </div>
 
             <div class="links">
@@ -54,16 +43,12 @@
             <p style="color: #5B5B5B">Actualmente no hay resultados a mostrar</p>
         </div>
         <div class="inputs" *ngIf="results">
-            <div class="input-field">
-                <label>Metadata</label>
-                <textarea></textarea>
+            <div class="input-field stylish" style="width: calc(100% / 2 - 30px);">
+                <input type="text" [value]="prediction">
+                <span class="placeholder">Clasificación de Ruido</span>
             </div>
-            <div class="input-field">
-                <label>Clasificación ded Ruido</label>
-                <input type="text">
-            </div>
-            <div class="input-field">
-                <input type="submit" value="Descargar CSV">
+            <div class="input-field stylish" style="width: calc(100% / 2 - 30px);">
+                <input type="submit" (click)="onCsv()" value="Descargar CSV">
             </div>
         </div>
     </div>

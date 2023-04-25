@@ -26,6 +26,7 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {ToastrModule} from "ngx-toastr";
 import { ShowFoundUserComponent } from './show-found-user/show-found-user.component';
 import { TokenInterceptor } from "./interceptors/token.interceptor";
+import {NgxUiLoaderModule} from "ngx-ui-loader";
 
 const routes: Routes = [
   { path: '', component:LoginComponent},
@@ -60,7 +61,7 @@ const routes: Routes = [
     ResetPasswordComponent,
     NewPasswordComponent,
     PopUpComponent,
-    ShowFoundUserComponent
+    ShowFoundUserComponent,
   ],
   imports: [
     BrowserModule,
@@ -72,7 +73,8 @@ const routes: Routes = [
     MatIconModule,
     HttpClientModule,
     ToastrModule.forRoot(),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgxUiLoaderModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }

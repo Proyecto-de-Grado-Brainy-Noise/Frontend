@@ -59,6 +59,7 @@ export class LoginComponent implements OnInit{
               const decodedToken = jwt_decode(response.body.token) as TokenPayload;
               sessionStorage.setItem("name", decodedToken.name);
               sessionStorage.setItem("role", decodedToken.role);
+              sessionStorage.setItem("sub", decodedToken.sub);
               this.router.navigate(['home']);
             } else {
               this.toastr.error("No se puedo iniciar sesión");

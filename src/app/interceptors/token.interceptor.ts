@@ -57,6 +57,7 @@ export class TokenInterceptor implements HttpInterceptor {
                   const decodedToken = jwt_decode(response.body.token) as TokenPayload;
                   sessionStorage.setItem("name", decodedToken.name);
                   sessionStorage.setItem("role", decodedToken.role);
+                  sessionStorage.setItem("email", decodedToken.sub);
                   const token = sessionStorage.getItem("Token");
                   request = request.clone({
                     setHeaders: {

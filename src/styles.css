@@ -18,6 +18,24 @@ textarea{
     font-family: 'Roboto', sans-serif;
 }
 
+h1 {
+    color: #F8CD00;
+}
+
+h2 {
+    color: #074E9F;
+}
+
+text-danger{
+    color: darkred;
+}
+
+label{
+    font-size: 12px;
+    font-weight: 500;
+    color: #074E9F;
+}
+
 .content-body {
     position:fixed;
     padding:0;
@@ -52,17 +70,6 @@ textarea{
     padding: 1rem 1.5rem;
 }
 
-h1 {
-    color: #F8CD00;
-}
-
-h2 {
-    color: #074E9F;
-}
-
-text-danger{
-    color: darkred;
-}
 .popup-container{
     width: 40%;
     box-shadow: 5px 5px 4px #ccc;
@@ -119,6 +126,17 @@ text-danger{
     font-size: 14px;
     z-index: 2;
     background: #e3e1e1;
+}
+
+.input-field input[type="file"]{
+    border: 2px solid #ddd;
+    background: transparent;
+    border-radius: 50px;
+    outline: none;
+    width: 100%;
+    font-size: 14px;
+    z-index: 2;
+    height: 100%;
 }
 
 .input-field textarea{
@@ -208,14 +226,23 @@ text-danger{
     transition: border-color 0.3s ease;
 }
 
+.input-field.stylish input[type="file"] {
+    border: 2px solid #ddd;
+    transition: border-color 0.3s ease;
+}
+
 .input-field.stylish input[type="date"]:valid,
-.input-field.stylish input[type="date"]:focus {
+.input-field.stylish input[type="date"]:focus,
+.input-field.stylish input[type="file"]:valid,
+.input-field.stylish input[type="file"]:focus {
     border-color: #074E9F;
     transition-delay: 0.1s
 }
 
 .input-field.stylish input[type="date"]:not(:placeholder-shown) + .placeholder,
 .input-field.stylish input[type="date"]:focus + .placeholder,
+.input-field.stylish input[type="file"]:not(:placeholder-shown) + .placeholder,
+.input-field.stylish input[type="file"]:focus + .placeholder,
 .input-field.stylish textarea + .placeholder,
 .input-field.stylish textarea + .placeholder {
     top: 0;
@@ -225,20 +252,7 @@ text-danger{
     width: auto
 }
 
-label{
-    font-size: 12px;
-    font-weight: 500;
-    color: #074E9F;
-}
-
-.custom-file{
-    margin: 8px 0;
-    border: 1px solid #074E9F;
-    border-radius: 15px;
-    width: 100%;
-}
-
-.custom-file::file-selector-button{
+.input-field.stylish input[type="file"]::file-selector-button{
     background: #074E9F;
     color: #E7E7E7;
     padding: 0 15px;
