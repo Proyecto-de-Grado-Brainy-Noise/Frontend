@@ -104,7 +104,6 @@ export class UploadResonanceComponent implements OnInit{
               link.href = url;
               link.download = 'metadata.csv';
 
-              // Simulate a click on the link to download the file
               document.body.appendChild(link);
               link.click();
               document.body.removeChild(link);

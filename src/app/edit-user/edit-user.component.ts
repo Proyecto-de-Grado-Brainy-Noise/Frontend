@@ -99,6 +99,14 @@ export class EditUserComponent implements OnInit {
     this.invalidRole = !!this.editUserForm.get('role')?.invalid;
 
     if(!this.invalidFirstname && !this.invalidLastname1 && !this.invalidBirthdate && !this.invalidDocnumber && !this.invalidDoctype && !this.invalidEmail && !this.invalidIdemployee && !this.invalidJobtitle && !this.invalidArea && !this.invalidRole){
+      if(this.editUserForm.get("doctype")?.value=="Cédula de ciudadanía"){
+        this.editUserForm.get("doctype")?.setValue(1);
+      } else if(this.editUserForm.get("doctype")?.value=="Cédula de extranjería"){
+        this.editUserForm.get("doctype")?.setValue(2);
+      } else {
+        this.editUserForm.get("doctype")?.setValue(3);
+      }
+
       this.http.post('http://localhost:9000/api/admin/updateUser', this.editUserForm.value, { observe: 'response' }).subscribe(
           (response: HttpResponse<any>) => {
             if (response.status == 200){
