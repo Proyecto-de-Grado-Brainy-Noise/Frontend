@@ -1,10 +1,9 @@
-import {Component, OnInit, EventEmitter, Output} from '@angular/core';
-import { FormBuilder, FormGroup, FormControl, Validators } from "@angular/forms";
+import {Component, OnInit} from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import {HttpClient, HttpResponse} from "@angular/common/http";
 import {ToastrService} from "ngx-toastr";
 import {Router} from "@angular/router";
 import jwt_decode from 'jwt-decode';
-import * as inspector from "inspector";
 import {AuthorizationService} from "../authorization.service";
 
 interface TokenPayload{

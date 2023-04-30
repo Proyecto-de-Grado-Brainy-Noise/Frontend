@@ -12,88 +12,110 @@
         </div>
         <div class="card-body">
             <div class="inputs">
-                <div class="input-field stylish">
-                    <input
-                            type="text"
-                            id="name"
-                            formControlName="name"
-                            required>
-                    <small style="color: darkred" *ngIf="invalidFirstname"> El nombre ingresado es inválido </small>
-                    <span class="placeholder">Primer nombre</span>
+                <div class="input-container">
+                    <div class="input-field stylish">
+                        <input
+                                type="text"
+                                id="name"
+                                formControlName="name"
+                                required>
+                        <span class="placeholder">Primer nombre</span>
+                    </div>
+                    <div>
+                        <small style="color: darkred" *ngIf="invalidFirstname"> El nombre ingresado es inválido </small>
+                    </div>
                 </div>
 
-                <div class="input-field stylish">
-                    <input
-                            type="text"
-                            id="name2"
-                            formControlName="name2"
-                            required>
-                    <span class="placeholder">Segundo nombre</span>
+                <div class="input-container">
+                    <div class="input-field stylish">
+                        <input
+                                type="text"
+                                id="name2"
+                                formControlName="name2"
+                                required>
+                        <span class="placeholder">Segundo nombre</span>
+                    </div>
                 </div>
 
-                <div class="input-field stylish">
-                    <input
-                            type="text"
-                            id="lastname"
-                            formControlName="lastname"
-                            required>
-                    <small style="color: darkred" *ngIf="invalidLastname1"> El apellido ingresado es inválido </small>
-                    <span class="placeholder">Primer apellido</span>
+                <div class="input-container">
+                    <div class="input-field stylish">
+                        <input
+                                type="text"
+                                id="lastname"
+                                formControlName="lastname"
+                                required>
+                        <span class="placeholder">Primer apellido</span>
+                    </div>
+                    <div>
+                        <small style="color: darkred" *ngIf="invalidLastname1"> El apellido ingresado es inválido </small>
+                    </div>
                 </div>
 
-                <div class="input-field stylish">
-                    <input
-                            type="text"
-                            id="lastname2"
-                            formControlName="lastname2"
-                            required>
-                    <span class="placeholder">Segundo apellido</span>
+                <div class="input-container">
+                    <div class="input-field stylish">
+                        <input
+                                type="text"
+                                id="lastname2"
+                                formControlName="lastname2"
+                                required>
+                        <span class="placeholder">Segundo apellido</span>
+                    </div>
                 </div>
             </div>
 
             <div class="inputs">
 
-                <div class="input-field stylish">
-                    <input
-                            type="date"
-                            id="birthdate"
-                            formControlName="birthdate"
-                            [class.is-invalid]="editUserForm.get('birthdate')?.invalid"
-                            required>
-                    <small style="color: darkred" *ngIf="invalidBirthdate"> El fecha de nacimiento es requerida </small>
-                    <span class="placeholder">Fecha de nacimiento</span>
+                <div class="input-container">
+                    <div class="input-field stylish">
+                        <input
+                                type="date"
+                                id="birthdate"
+                                formControlName="birthdate"
+                                [class.is-invalid]="editUserForm.get('birthdate')?.invalid"
+                                required>
+                        <span class="placeholder">Fecha de nacimiento</span>
+                    </div>
+                    <div>
+                        <small style="color: darkred" *ngIf="invalidBirthdate"> El fecha de nacimiento es requerida </small>
+                    </div>
                 </div>
 
-                <div class="input-field stylish">
-                    <input
-                            type="text"
-                            id="doctype"
-                            formControlName="doctype"
-                            [class.is-invalid]="editUserForm.get('doctype')?.invalid"
-                            readonly
-                            required>
-                    <span class="placeholder">Tipo de documento</span>
+                <div class="input-container">
+                    <div class="input-field stylish">
+                        <input
+                                type="text"
+                                id="doctype"
+                                formControlName="doctype"
+                                [class.is-invalid]="editUserForm.get('doctype')?.invalid"
+                                readonly
+                                required>
+                        <span class="placeholder">Tipo de documento</span>
+                    </div>
                 </div>
 
-                <div class="input-field stylish">
-                    <input
-                            type="text"
-                            id="document"
-                            formControlName="document"
-                            readonly
-                            required>
-                    <span class="placeholder">Número de documento</span>
+                <div class="input-container">
+                    <div class="input-field stylish">
+                        <input
+                                type="text"
+                                id="document"
+                                formControlName="document"
+                                readonly
+                                required>
+                        <span class="placeholder">Número de documento</span>
+                    </div>
                 </div>
 
-                <div class="input-field stylish">
-                    <input
-                            type="email"
-                            id="email"
-                            formControlName="email"
-                            [class.is-invalid]="editUserForm.get('email')?.invalid"
-                            readonly
-                            required>
-                    <span class="placeholder">Correo electrónico</span>
+                <div class="input-container">
+                    <div class="input-field stylish">
+                        <input
+                                type="email"
+                                id="email"
+                                formControlName="email"
+                                [class.is-invalid]="editUserForm.get('email')?.invalid"
+                                readonly
+                                required>
+                        <span class="placeholder">Correo electrónico</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -103,58 +125,75 @@
         </div>
         <div class="card-body">
             <div class="inputs">
-                <div class="input-field stylish">
-                    <input
-                            type="text"
-                            id="idEmployee"
-                            formControlName="idEmployee"
-                            required>
-                    <small style="color: darkred" *ngIf="invalidIdemployee"> El ID es inválido </small>
-                    <span class="placeholder">Correo electrónico</span>
+                <div class="input-container">
+                    <div class="input-field stylish">
+                        <input
+                                type="text"
+                                id="idEmployee"
+                                formControlName="idEmployee"
+                                required>
+                        <span class="placeholder">Correo electrónico</span>
+                    </div>
+                    <div>
+                        <small style="color: darkred" *ngIf="invalidIdemployee"> El ID es inválido </small>
+                    </div>
                 </div>
 
-                <div class="input-field stylish">
-                    <select id="jobtitle"
-                            name="jobtitle"
-                            formControlName="jobtitle"
-                            required>
-                        <option value="0" disabled selected hidden>Seleccione una opción</option>
-                        <option value="Médico interno">Médico interno</option>
-                        <option value="Médico especialista">Médico especialista</option>
-                        <option value="Radiólogo">Radiólogo</option>
-                        <option value="Enfermero">Enfermero</option>
-                        <option value="Auxiliar">Auxiliar</option>
-                    </select>
-                    <small style="color: darkred" *ngIf="invalidJobtitle"> Por favor seleccione una opción </small>
-                    <span class="placeholder">Cargo</span>
+                <div class="input-container">
+                    <div class="input-field stylish">
+                        <select id="jobtitle"
+                                name="jobtitle"
+                                formControlName="jobtitle"
+                                required>
+                            <option value="0" disabled selected hidden>Seleccione una opción</option>
+                            <option value="Médico interno">Médico interno</option>
+                            <option value="Médico especialista">Médico especialista</option>
+                            <option value="Radiólogo">Radiólogo</option>
+                            <option value="Enfermero">Enfermero</option>
+                            <option value="Auxiliar">Auxiliar</option>
+                        </select>
+                        <span class="placeholder">Cargo</span>
+                    </div>
+                    <div>
+                        <small style="color: darkred" *ngIf="invalidJobtitle"> Por favor seleccione una opción </small>
+                    </div>
                 </div>
 
-                <div class="input-field stylish">
-                    <select id="area"
-                            name="area"
-                            formControlName="area"
-                            required>
-                        <option value="0" disabled selected hidden>Seleccione una opción</option>
-                        <option value="Medicina interna">Medicina interna</option>
-                        <option value="Medicina general">Medicina general</option>
-                        <option value="Radiología">Radiología</option>
-                        <option value="Enfermería">Enfermería</option>
-                        <option value="Auxiliar">Auxiliar</option>
-                    </select>
-                    <small style="color: darkred" *ngIf="invalidArea"> Por favor seleccione una opción </small>
-                    <span class="placeholder">Área</span>
+                <div class="input-container">
+                    <div class="input-field stylish">
+                        <select id="area"
+                                name="area"
+                                formControlName="area"
+                                required>
+                            <option value="0" disabled selected hidden>Seleccione una opción</option>
+                            <option value="Medicina interna">Medicina interna</option>
+                            <option value="Medicina general">Medicina general</option>
+                            <option value="Radiología">Radiología</option>
+                            <option value="Enfermería">Enfermería</option>
+                            <option value="Auxiliar">Auxiliar</option>
+                        </select>
+                        <span class="placeholder">Área</span>
+                    </div>
+                    <div>
+                        <small style="color: darkred" *ngIf="invalidArea"> Por favor seleccione una opción </small>
+                    </div>
                 </div>
-                <div class="input-field stylish">
-                    <select id="role"
-                            name="role"
-                            formControlName="role"
-                            required>
-                        <option value="0" disabled selected hidden>Seleccione una opción</option>
-                        <option value="U">Usuario</option>
-                        <option value="A">Administrador</option>
-                    </select>
-                    <small style="color: darkred" *ngIf="invalidRole"> Por favor seleccione una opción </small>
-                    <span class="placeholder">Rol</span>
+
+                <div class="input-container">
+                    <div class="input-field stylish">
+                        <select id="role"
+                                name="role"
+                                formControlName="role"
+                                required>
+                            <option value="0" disabled selected hidden>Seleccione una opción</option>
+                            <option value="U">Usuario</option>
+                            <option value="A">Administrador</option>
+                        </select>
+                        <span class="placeholder">Rol</span>
+                    </div>
+                    <div>
+                        <small style="color: darkred" *ngIf="invalidRole"> Por favor seleccione una opción </small>
+                    </div>
                 </div>
             </div>
             <div class="inputs">

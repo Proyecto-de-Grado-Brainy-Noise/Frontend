@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {HttpClient, HttpParams, HttpResponse} from "@angular/common/http";
 import {ToastrService} from "ngx-toastr";
 
@@ -13,7 +13,6 @@ export class HistoryComponent {
 
   constructor(
       private http: HttpClient,
-      private toastr: ToastrService,
   ) { }
 
   ngOnInit(): void{

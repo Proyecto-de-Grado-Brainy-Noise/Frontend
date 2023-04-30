@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient, HttpResponse} from '@angular/common/http';
 import {ToastrService} from "ngx-toastr";
-import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-all-users',

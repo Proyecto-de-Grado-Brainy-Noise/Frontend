@@ -1,8 +1,6 @@
-import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
-import {FormBuilder} from "@angular/forms";
 import {HttpClient, HttpResponse} from "@angular/common/http";
-import jwt_decode from "jwt-decode";
 import {AuthorizationService} from "../authorization.service";
 import {ToastrService} from "ngx-toastr";
 
