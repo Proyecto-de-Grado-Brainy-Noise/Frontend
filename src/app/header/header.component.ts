@@ -42,7 +42,7 @@ export class HeaderComponent implements OnInit{
     let request = {
       "email" : sessionStorage.getItem("sub")!
     };
-    this.http.post('http://localhost:9000/api/auth/logout', request, { observe: 'response' }).subscribe(
+    this.http.post('http://api-gateway:9000/api/auth/logout', request, { observe: 'response' }).subscribe(
         (response: HttpResponse<any>) => {
           if (response.status == 200){
             sessionStorage.setItem("Token", "");

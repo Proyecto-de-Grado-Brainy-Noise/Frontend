@@ -48,7 +48,7 @@ export class TokenInterceptor implements HttpInterceptor {
             return throwError(() => new Error('Error al renovar el token'));
           }
 
-          return this.http.get('http://localhost:9000/api/auth/renovate-token', { observe: 'response' }).pipe(
+          return this.http.get('http://api-gateway:9000/api/auth/renovate-token', { observe: 'response' }).pipe(
               switchMap((response: HttpResponse<any>) => {
                 if (response.status == 200){
                   this.flag = 0;

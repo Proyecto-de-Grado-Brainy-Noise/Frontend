@@ -18,7 +18,7 @@ export class HistoryComponent {
   ngOnInit(): void{
       const params = new HttpParams().set("email", sessionStorage.getItem("sub")!);
 
-      this.http.get('http://127.0.0.1:9000/queries/getAllPredictionsByEmail', { observe: 'response', params }).subscribe(
+      this.http.get('http://api-gateway:9000/queries/getAllPredictionsByEmail', { observe: 'response', params }).subscribe(
           (response: HttpResponse<any>) => {
               if (response.status == 200){
                   console.log(response.body.data);
@@ -57,7 +57,7 @@ export class HistoryComponent {
   downloadCsv(){
       const params = new HttpParams().set("email", sessionStorage.getItem("sub")!);
 
-      this.http.get('http://127.0.0.1:9000/queries/getAllResultsFileByEmail/', {
+      this.http.get('http://api-gateway:9000/queries/getAllResultsFileByEmail/', {
           responseType: 'blob',
           params
       }).subscribe(

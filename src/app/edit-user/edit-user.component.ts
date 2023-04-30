@@ -53,7 +53,7 @@ export class EditUserComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.http.post('http://localhost:9000/api/admin/searchUser', this.request, { observe: 'response' }).subscribe(
+    this.http.post('http://api-gateway:9000/api/admin/searchUser', this.request, { observe: 'response' }).subscribe(
         (response: HttpResponse<any>) => {
           if (response.status == 200){
             this.user = Object.values(response.body.message[0]);
@@ -107,7 +107,7 @@ export class EditUserComponent implements OnInit {
         this.editUserForm.get("doctype")?.setValue(3);
       }
 
-      this.http.post('http://localhost:9000/api/admin/updateUser', this.editUserForm.value, { observe: 'response' }).subscribe(
+      this.http.post('http://api-gateway:9000/api/admin/updateUser', this.editUserForm.value, { observe: 'response' }).subscribe(
           (response: HttpResponse<any>) => {
             if (response.status == 200){
               this.toastr.success(response.body.message);

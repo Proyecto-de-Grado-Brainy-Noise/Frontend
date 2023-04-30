@@ -42,13 +42,13 @@ export class UploadResonanceComponent implements OnInit{
 
     if(this.imageFile != null) {
         this.ngxService.start();
-        this.http.post('http://127.0.0.1:9000/model/makePrediction/', formData, {observe: 'response'}).subscribe(
+        this.http.post('http://api-gateway:9000/model/makePrediction/', formData, {observe: 'response'}).subscribe(
             async (response: HttpResponse<any>) => {
                 if (response.status == 200) {
                     this.task_id = response.body.task_id;
                     const params = new HttpParams().set('task_id', response.body.task_id);
                     await this.delay(20000);
-                    this.http.get('http://127.0.0.1:9000/queries/getCurrentResultPrediction/', {
+                    this.http.get('http://api-gateway:9000/queries/getCurrentResultPrediction/', {
                         observe: 'response',
                         params
                     }).subscribe(
@@ -95,7 +95,7 @@ export class UploadResonanceComponent implements OnInit{
   onCsv(){
       const params = new HttpParams().set('task_id', this.task_id);
 
-      this.http.get('http://127.0.0.1:9000/queries/getCurrentResultPredictionFile/', {
+      this.http.get('http:/api-gateway:9000/queries/getCurrentResultPredictionFile/', {
           responseType: 'blob',
           params
       }).subscribe(
