@@ -1,6 +1,10 @@
 import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {FormBuilder} from "@angular/forms";
+import {HttpClient, HttpResponse} from "@angular/common/http";
+import jwt_decode from "jwt-decode";
+import {AuthorizationService} from "../authorization.service";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-header',
@@ -11,7 +15,6 @@ export class HeaderComponent implements OnInit{
 
   @Input() collapsed = false;
   @Input() screenWidth = 0;
-  @Output() logoutEvent = new EventEmitter<boolean>();
 
   name = "";
 
@@ -31,11 +34,34 @@ export class HeaderComponent implements OnInit{
 
   constructor(
       private route: ActivatedRoute,
-      private router: Router
+      private router: Router,
+      private http: HttpClient,
+      private toastr: ToastrService,
+      private authorizationService: AuthorizationService
   ) { }
 
   onClose() {
-    this.logoutEvent.emit(false);
+    let request = {
+      "email" : sessionStorage.getItem("sub")!
+    };
+    this.http.post('http://localhost:9000/api/auth/logout', request, { observe: 'response' }).subscribe(
+        (response: HttpResponse<any>) => {
+          if (response.status == 200){
+            sessionStorage.setItem("Token", "");
+            sessionStorage.setItem("NewToken", "");
+            sessionStorage.setItem("name", "");
+            sessionStorage.setItem("role", "");
+            sessionStorage.setItem("sub", "");
+            this.authorizationService.logout();
+            this.router.navigate(['']);
+          } else {
+            this.toastr.error("Error al cerrar sesión");
+          }
+        },
+        error => {
+          this.toastr.error("Error al cerrar sesión");
+        }
+    );
   }
 
 }
