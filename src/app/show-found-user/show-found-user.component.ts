@@ -59,7 +59,7 @@ export class ShowFoundUserComponent implements OnInit{
   ) { }
 
   ngOnInit(): void {
-    this.http.post('http://api-gateway:9000/api/admin/searchUser', this.request, { observe: 'response' }).subscribe(
+    this.http.post('http://127.0.0.1:9000/api/admin/searchUser', this.request, { observe: 'response' }).subscribe(
         (response: HttpResponse<any>) => {
           if (response.status == 200){
             this.user = Object.values(response.body.message[0]);
@@ -106,7 +106,7 @@ export class ShowFoundUserComponent implements OnInit{
         "idEmployee" : this.idEmployee
       };
 
-      this.http.post('http://api-gateway:9000/api/admin/deleteUser', this.editUserForm.value, { observe: 'response' }).subscribe(
+      this.http.post('http://127.0.0.1:9000/api/admin/deleteUser', this.editUserForm.value, { observe: 'response' }).subscribe(
           (response: HttpResponse<any>) => {
             if (response.status == 200){
               this.showPopUp = false;
@@ -138,7 +138,7 @@ export class ShowFoundUserComponent implements OnInit{
     this.invalidRole = !!this.editUserForm.get('role')?.invalid;
 
     if(!this.invalidFirstname && !this.invalidLastname1 && !this.invalidBirthdate && !this.invalidDocnumber && !this.invalidDoctype && !this.invalidEmail && !this.invalidIdemployee && !this.invalidJobtitle && !this.invalidArea && !this.invalidRole){
-      this.http.post('http://api-gateway:9000/api/admin/updateUser', this.editUserForm.value, { observe: 'response' }).subscribe(
+      this.http.post('http://127.0.0.1:9000/api/admin/updateUser', this.editUserForm.value, { observe: 'response' }).subscribe(
           (response: HttpResponse<any>) => {
             if (response.status == 200){
               this.toastr.success(response.body.message);

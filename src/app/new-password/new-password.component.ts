@@ -40,7 +40,7 @@ export class NewPasswordComponent implements OnInit{
         "email" : this.email,
         "password" : this.newPasswordForm.get('password')?.value
       };
-      this.http.post('http://api-gateway:9000/api/respwd', request, { observe: 'response' }).subscribe(
+      this.http.post('http://127.0.0.1:9000/api/respwd', request, { observe: 'response' }).subscribe(
           (response: HttpResponse<any>) => {
             if (response.status == 200){
               this.toastr.success(response.body.message);

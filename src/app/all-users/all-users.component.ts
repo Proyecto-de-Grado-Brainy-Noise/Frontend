@@ -19,7 +19,7 @@ export class AllUsersComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.http.get('http://api-gateway:9000/api/admin/listUsers', { observe: 'response' }).subscribe(
+    this.http.get('http://127.0.0.1:9000/api/admin/listUsers', { observe: 'response' }).subscribe(
         (response: HttpResponse<any>) => {
           if (response.status == 200){
             this.users = Object.values(response.body.message);
@@ -57,7 +57,7 @@ export class AllUsersComponent implements OnInit {
   receiveAcceptance({$event}: { $event: any }){
       if($event){
 
-          this.http.post('http://api-gateway:9000/api/admin/deleteUser', this.userDelete, { observe: 'response' }).subscribe(
+          this.http.post('http://127.0.0.1:9000/api/admin/deleteUser', this.userDelete, { observe: 'response' }).subscribe(
               (response: HttpResponse<any>) => {
                   if (response.status == 200){
                       this.showPopUp = false;

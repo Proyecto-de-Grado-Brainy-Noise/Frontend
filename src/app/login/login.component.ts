@@ -52,7 +52,7 @@ export class LoginComponent implements OnInit{
     this.invalidPassword = !!this.loginForm.get('password')?.invalid;
 
     if (this.loginForm.get('email')?.valid && this.loginForm.get('password')?.valid){
-      this.http.post('http://api-gateway:9000/api/auth/authenticate', this.loginForm.value, { observe: 'response' }).subscribe(
+      this.http.post('http://127.0.0.1:9000/api/auth/authenticate', this.loginForm.value, { observe: 'response' }).subscribe(
           (response: HttpResponse<any>) => {
             if (response.status == 200){
               sessionStorage.setItem("Token", response.body.token);

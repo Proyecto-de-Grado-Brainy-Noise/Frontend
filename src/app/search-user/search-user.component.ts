@@ -34,7 +34,7 @@ export class SearchUserComponent implements OnInit {
       "idEmployee" : this.searchIDForm.value.idEmployee
     };
 
-    this.http.post('http://api-gateway:9000/api/admin/searchUser', request, { observe: 'response' }).subscribe(
+    this.http.post('http://127.0.0.1:9000/api/admin/searchUser', request, { observe: 'response' }).subscribe(
         (response: HttpResponse<any>) => {
           if (response.status == 200){
             if (response.body.message[0] != null){
@@ -60,7 +60,7 @@ export class SearchUserComponent implements OnInit {
       "doctype" : this.searchDocumentForm.value.doctype
     };
 
-    this.http.post('http://api-gateway:9000/api/admin/searchUser', request, { observe: 'response' }).subscribe(
+    this.http.post('http://127.0.0.1:9000/api/admin/searchUser', request, { observe: 'response' }).subscribe(
         (response: HttpResponse<any>) => {
           if (response.status == 200){
             if (response.body.message[0] != null){

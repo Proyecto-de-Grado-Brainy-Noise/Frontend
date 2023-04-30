@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient, HttpResponse} from '@angular/common/http';
 import {ToastrService} from "ngx-toastr";
-import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-all-users',
@@ -16,11 +15,10 @@ export class AllUsersComponent implements OnInit {
   constructor(
       private http: HttpClient,
       private toastr: ToastrService,
-      private router: Router,
   ) { }
 
   ngOnInit(): void {
-    this.http.get('http://api-gateway:9000/api/admin/listUsers', { observe: 'response' }).subscribe(
+    this.http.get('http://127.0.0.1:9000/api/admin/listUsers', { observe: 'response' }).subscribe(
         (response: HttpResponse<any>) => {
           if (response.status == 200){
             this.users = Object.values(response.body.message);
@@ -47,7 +45,7 @@ export class AllUsersComponent implements OnInit {
             "idEmployee" : this.idDelete
           };
 
-          this.http.post('http://api-gateway:9000/api/admin/deleteUser', request, { observe: 'response' }).subscribe(
+          this.http.post('http://127.0.0.1:9000/api/admin/deleteUser', request, { observe: 'response' }).subscribe(
               (response: HttpResponse<any>) => {
                   if (response.status == 200){
                       this.showPopUp = false;

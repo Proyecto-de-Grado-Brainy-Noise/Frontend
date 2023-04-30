@@ -25,9 +25,7 @@ export class ResetPasswordComponent implements OnInit{
   constructor(
       private formBuilder: FormBuilder,
       private http: HttpClient,
-      private toastr: ToastrService,
-      private route: ActivatedRoute,
-      private router: Router,
+      private toastr: ToastrService
   ) {
   }
 
@@ -39,7 +37,7 @@ export class ResetPasswordComponent implements OnInit{
     this.invalidEmail = !!this.resetForm.get('email')?.invalid;
     this.invalidConfirmEmail = !!this.resetForm.get('confirmEmail')?.invalid;
     if (this.resetForm.get('email')?.valid && this.resetForm.get('confirmEmail')?.valid){
-      this.http.post('http://api-gateway:9000/api/reset-password', this.resetForm.value, { observe: 'response' }).subscribe(
+      this.http.post('http://127.0.0.1:9000/api/reset-password', this.resetForm.value, { observe: 'response' }).subscribe(
           (response: HttpResponse<any>) => {
             if (response.status == 200){
               this.toastr.success(response.body.message);
