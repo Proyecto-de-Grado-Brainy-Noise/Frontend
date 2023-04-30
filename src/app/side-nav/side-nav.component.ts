@@ -1,6 +1,7 @@
 import { animate, style, transition, trigger, keyframes } from '@angular/animations';
 import { Component, EventEmitter, HostListener, OnInit, Output } from '@angular/core';
-import { navbarData } from './nav-data';
+import { navbarDataAdmin } from './nav-data-admin';
+import { navbarDataUser } from './nav-data-user';
 
 interface SideNavToggle {
   screenWidth: number;
@@ -33,7 +34,9 @@ export class SideNavComponent implements OnInit{
   @Output() onToggleSideNav: EventEmitter<SideNavToggle> = new EventEmitter();
   collapsed = false;
   screenWidth = 0;
-  navData = navbarData;
+  navDataAdmin = navbarDataAdmin;
+  navDataUser = navbarDataUser;
+  isAdmin:boolean = false;
 
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
@@ -46,7 +49,11 @@ export class SideNavComponent implements OnInit{
 
   ngOnInit(): void {
     this.screenWidth = window.innerWidth;
-    
+    let rol = sessionStorage.getItem("role")!;
+
+    if (rol == 'A'){
+      this.isAdmin = true;
+    }
   }
 
   toggleCollapse(): void {

@@ -13,6 +13,11 @@ body {
     background: #E7E7E7;
 }
 
+a{
+    color: #F8CD00;
+    cursor: pointer;
+}
+
 input[type="date"],
 textarea{
     font-family: 'Roboto', sans-serif;
@@ -92,12 +97,15 @@ label{
 .input-field {
     display: flex;
     align-items: flex-start;
-    width: calc(100% / 4 - 30px);
     flex-direction: column;
     position: relative;
     font-size: 14px;
     padding-top: 20px;
     margin-bottom: 5px;
+}
+
+.input-container{
+    width: calc(100% / 4 - 30px);
 }
 
 .input-field input{
@@ -351,4 +359,9 @@ input[type="submit"]:active{
 
 .table-link:hover{
     color: #074E9F;
+}
+
+.column {
+    display: flex;
+    flex: 1;
 }

@@ -17,7 +17,6 @@ export class AllUsersComponent implements OnInit {
   constructor(
       private http: HttpClient,
       private toastr: ToastrService,
-      private router: Router,
   ) { }
 
   ngOnInit(): void {

@@ -27,21 +27,23 @@ import {ToastrModule} from "ngx-toastr";
 import { ShowFoundUserComponent } from './show-found-user/show-found-user.component';
 import { TokenInterceptor } from "./interceptors/token.interceptor";
 import {NgxUiLoaderModule} from "ngx-ui-loader";
+import {AuthorizationService} from "./authorization.service";
 
 const routes: Routes = [
   { path: '', component:LoginComponent},
   { path: 'login', component: LoginComponent },
   { path: 'reset-password', component: ResetPasswordComponent },
   { path: 'new-password/:email', component: NewPasswordComponent },
-  { path: 'home', component: BodyComponent, children: [
-      { path: 'upload-resonance', component: UploadResonanceComponent },
-      { path: 'admin/history', component: HistoryComponent },
-      { path: 'admin/new-user', component: NewUserComponent },
-      { path: 'admin/search-user', component: SearchUserComponent },
-      { path: 'admin/users', component: AllUsersComponent },
-      { path: 'admin/edit-user/:idEmployee', component: EditUserComponent },
-      { path: 'admin/found-user/:idEmployee', component: ShowFoundUserComponent },
-      { path: 'admin/found-user/:doctype/:document', component: ShowFoundUserComponent }
+  { path: 'home', component: BodyComponent,children: [
+      { path: '', redirectTo: 'upload-resonance', pathMatch: 'full'/*, canActivate: [AuthorizationService]*/ },
+      { path: 'upload-resonance', component: UploadResonanceComponent, canActivate: [AuthorizationService] },
+      { path: 'history', component: HistoryComponent, canActivate: [AuthorizationService] },
+      { path: 'admin/new-user', component: NewUserComponent, canActivate: [AuthorizationService] },
+      { path: 'admin/search-user', component: SearchUserComponent, canActivate: [AuthorizationService] },
+      { path: 'admin/users', component: AllUsersComponent, canActivate: [AuthorizationService] },
+      { path: 'admin/edit-user/:idEmployee', component: EditUserComponent, canActivate: [AuthorizationService] },
+      { path: 'admin/found-user/:idEmployee', component: ShowFoundUserComponent, canActivate: [AuthorizationService] },
+      { path: 'admin/found-user/:doctype/:document', component: ShowFoundUserComponent, canActivate: [AuthorizationService] }
   ]}
 ]
 

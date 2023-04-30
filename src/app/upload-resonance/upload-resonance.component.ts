@@ -15,6 +15,7 @@ export class UploadResonanceComponent implements OnInit{
   imageFile:any;
   metadataFile:any;
   prediction:string = "";
+  confidence:string = "";
   task_id:string = "";
 
   results = false;
@@ -39,7 +40,7 @@ export class UploadResonanceComponent implements OnInit{
     formData.set("metadata", this.metadataFile);
     formData.set("email", sessionStorage.getItem("sub")!);
 
-    if(this.imageFile != null && this.metadataFile != null) {
+    if(this.imageFile != null) {
         this.ngxService.start();
         this.http.post('http://127.0.0.1:9000/model/makePrediction/', formData, {observe: 'response'}).subscribe(
             async (response: HttpResponse<any>) => {
@@ -55,31 +56,31 @@ export class UploadResonanceComponent implements OnInit{
                             if (response2.status == 200) {
                                 this.ngxService.stop();
                                 this.results = true;
+                                this.confidence = response2.body.data[0].confidence;
                                 if (response2.body.data[0].predicton == 0) {
-                                    this.prediction = "No tiene";
+                                    this.prediction = "No hay presencia de ruido";
                                 } else if (response2.body.data[0].predicton == 1) {
-                                    this.prediction = "Medio";
-                                } else {
-                                    this.prediction = "Alto";
+                                    this.prediction = "Hay presencia de ruido";
                                 }
                             }
                         },
                         error => {
-                            console.log(error.error.message);
+                            this.ngxService.stop();
+                            this.toastr.error("Error al procesar la imagen");
                         }
                     );
                 } else {
                     this.ngxService.stop();
-                    this.toastr.error(response.body.message);
+                    this.toastr.error("Error al procesar la imagen");
                 }
             },
             error => {
                 this.ngxService.stop();
-                this.toastr.error(error.error.message);
+                this.toastr.error("Error al procesar la imagen");
             }
         );
     } else {
-        this.toastr.error("Por favor cargue ambos archivos");
+        this.toastr.error("Por favor suba la imagen");
     }
   }
 

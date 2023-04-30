@@ -43,12 +43,16 @@
             <p style="color: #5B5B5B">Actualmente no hay resultados a mostrar</p>
         </div>
         <div class="inputs" *ngIf="results">
-            <div class="input-field stylish" style="width: calc(100% / 2 - 30px);">
-                <input type="text" [value]="prediction">
-                <span class="placeholder">Clasificación de Ruido</span>
+            <div class="input-field stylish" style="width: calc(100% / 3 - 30px);">
+                <input type="text" style="color: #0057B8; font-weight: bold; text-decoration: underline;" [value]="prediction" readonly>
+                <span class="placeholder">Ruido</span>
             </div>
-            <div class="input-field stylish" style="width: calc(100% / 2 - 30px);">
-                <input type="submit" (click)="onCsv()" value="Descargar CSV">
+            <div class="input-field stylish" style="width: calc(100% / 3 - 30px);">
+                <input type="text" [value]="confidence" readonly>
+                <span class="placeholder">Porcentaje de confianza</span>
+            </div>
+            <div class="input-field stylish" style="width: calc(100% / 3 - 30px);">
+                <input type="submit" style="background: #F8CD00;" (click)="onCsv()" value="Descargar CSV">
             </div>
         </div>
     </div>

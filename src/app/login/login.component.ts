@@ -5,6 +5,7 @@ import {ToastrService} from "ngx-toastr";
 import {Router} from "@angular/router";
 import jwt_decode from 'jwt-decode';
 import * as inspector from "inspector";
+import {AuthorizationService} from "../authorization.service";
 
 interface TokenPayload{
   role: string,
@@ -34,7 +35,8 @@ export class LoginComponent implements OnInit{
       private formBuilder: FormBuilder,
       private http: HttpClient,
       private toastr: ToastrService,
-      private router: Router
+      private router: Router,
+      private authorizationService: AuthorizationService
   ) {
   }
 
@@ -60,13 +62,14 @@ export class LoginComponent implements OnInit{
               sessionStorage.setItem("name", decodedToken.name);
               sessionStorage.setItem("role", decodedToken.role);
               sessionStorage.setItem("sub", decodedToken.sub);
+              this.authorizationService.login();
               this.router.navigate(['home']);
             } else {
-              this.toastr.error("No se puedo iniciar sesión");
+              this.toastr.error("Error al iniciar sesión");
             }
           },
           error => {
-            this.toastr.error("No se puedo iniciar sesión");
+            this.toastr.error("Error al iniciar sesión");
           }
       );
     }

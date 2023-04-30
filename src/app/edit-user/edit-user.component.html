@@ -7,14 +7,19 @@
         </div>
         <div class="card-body">
             <div class="inputs">
-                <div class="input-field stylish">
-                    <input
-                            type="text"
-                            id="name"
-                            formControlName="name"
-                            required>
-                    <small style="color: darkred" *ngIf="invalidFirstname"> El nombre ingresado es inválido </small>
-                    <span class="placeholder">Primer nombre</span>
+                <div class="input-container">
+                    <div class="input-field stylish">
+                        <input
+                                type="text"
+                                id="name"
+                                formControlName="name"
+                                required>
+                        <small style="color: darkred" *ngIf="invalidFirstname"> El nombre ingresado es inválido </small>
+                        <span class="placeholder">Primer nombre</span>
+                    </div>
+                    <div>
+
+                    </div>
                 </div>
 
                 <div class="input-field stylish">

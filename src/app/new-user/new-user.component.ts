@@ -66,7 +66,7 @@ export class NewUserComponent implements OnInit {
       this.http.post('http://localhost:9000/api/auth/register', this.newUserForm.value, { observe: 'response' }).subscribe(
           (response: HttpResponse<any>) => {
             if (response.status == 200){
-              this.toastr.success(response.body.message);
+              this.toastr.success("Usuario creado exitósamente");
               this.router.navigate(["home/admin/users"]);
             } else {
               this.toastr.error(response.body.message);

@@ -1,21 +1,26 @@
 <h1>Historial</h1>
 <div class="card">
     <div class="card-head">
-        Su historial de resonancias consultadas actual es:
+        <div style="width: 70%; display: inline-block">
+            Su historial de resonancias consultadas actual es:
+        </div>
+        <div style="width: 30%; text-align:right ;display: inline-block">
+            <a (click)="downloadCsv()"><i class="fas fa-download" style="color: #F8CD00;"></i> Descargar CSV</a>
+        </div>
     </div>
     <table class="content-table">
         <thead>
         <tr>
-            <th>Fecha</th>
-            <th>ID Paciente</th>
-            <th>Resultado</th>
+            <th class="order-header" (click)="sortColumn('date')">Fecha</th>
+            <th class="order-header" (click)="sortColumn('confidence')">Confianza</th>
+            <th class="order-header" (click)="sortColumn('result')">Ruido</th>
         </tr>
         </thead>
         <tbody>
         <tr *ngFor="let data of historyData">
-            <td>{{data.fecha}}</td>
-            <td>{{data.idPatient}}</td>
-            <td>{{data.resultado}}</td>
+            <td>{{data.date}}</td>
+            <td>{{data.confidence}}</td>
+            <td>{{data.result}}</td>
         </tr>
         </tbody>
     </table>

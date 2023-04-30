@@ -4,13 +4,25 @@
         <button class="logo-text" @fadeInOut *ngIf="collapsed" (click)="toggleCollapse()"></button>
     </div>
     <ul class="sidenav-nav">
-        <li class="sidenav-nav-item" *ngFor="let data of navData">
-            <a class="sidenav-nav-link" [routerLink]="[data.routeLink]">
-                <i class="sidenav-link-icon" [class]="data.icon"></i>
-                <span class="sidenav-link-text" @fadeInOut *ngIf="collapsed">
+        <ng-container *ngIf="isAdmin">
+            <li class="sidenav-nav-item"  *ngFor="let data of navDataAdmin">
+                <a class="sidenav-nav-link" [routerLink]="[data.routeLink]">
+                    <i class="sidenav-link-icon" [class]="data.icon"></i>
+                    <span class="sidenav-link-text" @fadeInOut *ngIf="collapsed">
                     {{data.label}}
                 </span>
-            </a>
-        </li>
+                </a>
+            </li>
+        </ng-container>
+        <ng-container *ngIf="!isAdmin">
+            <li class="sidenav-nav-item"  *ngFor="let data of navDataUser">
+                <a class="sidenav-nav-link" [routerLink]="[data.routeLink]">
+                    <i class="sidenav-link-icon" [class]="data.icon"></i>
+                    <span class="sidenav-link-text" @fadeInOut *ngIf="collapsed">
+                    {{data.label}}
+                </span>
+                </a>
+            </li>
+        </ng-container>
     </ul>
 </div>
