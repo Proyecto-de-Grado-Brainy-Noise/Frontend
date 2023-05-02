@@ -12,8 +12,8 @@ import {NgxUiLoaderService} from "ngx-ui-loader";
 export class UploadResonanceComponent implements OnInit{
 
   email:string = sessionStorage.getItem("sub")!;
-  imageFile:any = null;
-  metadataFile:any = null;
+  imageFile:any;
+  metadataFile:any;
   prediction:string = "";
   confidence:any = 0;
   task_id:string = "";
@@ -37,14 +37,10 @@ export class UploadResonanceComponent implements OnInit{
   onAnalyze(): any{
 
     let formData = new FormData();
-    if(this.metadataFile != null){
-        formData.set("resonance_file", this.imageFile);
-        formData.set("metadata", this.metadataFile);
-        formData.set("email", sessionStorage.getItem("sub")!);
-    } else {
-        formData.set("resonance_file", this.imageFile);
-        formData.set("email", sessionStorage.getItem("sub")!);
-    }
+    formData.set("resonance_file", this.imageFile);
+    formData.set("metadata", this.metadataFile);
+    formData.set("email", sessionStorage.getItem("sub")!);
+
 
     if(this.imageFile != null) {
         this.ngxService.start();
