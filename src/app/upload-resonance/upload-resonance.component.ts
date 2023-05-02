@@ -16,6 +16,7 @@ export class UploadResonanceComponent implements OnInit{
   metadataFile:any;
   prediction:string = "";
   confidence:any = 0;
+  confidencePercentage:string = "";
   task_id:string = "";
 
   results = false;
@@ -58,7 +59,8 @@ export class UploadResonanceComponent implements OnInit{
                             if (response2.status == 200) {
                                 this.ngxService.stop();
                                 this.results = true;
-                                this.confidence = (response2.body.data[0].confidence)*100 + "%";
+                                this.confidence = (response2.body.data[0].confidence) * 100;
+                                this.confidencePercentage = this.confidence + "%";
                                 if (response2.body.data[0].predicton == 0) {
                                     this.prediction = "No hay presencia de ruido";
                                 } else if (response2.body.data[0].predicton == 1) {
