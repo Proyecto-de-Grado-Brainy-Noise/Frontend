@@ -50,7 +50,7 @@ export class UploadResonanceComponent implements OnInit{
                 if (response.status == 200) {
                     this.task_id = response.body.task_id;
                     const params = new HttpParams().set('task_id', response.body.task_id);
-                    await this.delay(20000);
+                    await this.delay(40000);
                     this.http.get('http://127.0.0.1:9000/queries/getCurrentResultPrediction/', {
                         observe: 'response',
                         params
