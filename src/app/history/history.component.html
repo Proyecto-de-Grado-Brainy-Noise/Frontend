@@ -19,7 +19,7 @@
         <tbody>
         <tr *ngFor="let data of historyData">
             <td>{{data.date}}</td>
-            <td>{{data.confidence}}</td>
+            <td>{{data.confidence*100}}%</td>
             <td>{{data.result}}</td>
         </tr>
         </tbody>
