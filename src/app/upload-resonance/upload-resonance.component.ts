@@ -59,11 +59,7 @@ export class UploadResonanceComponent implements OnInit{
                             if (response2.status == 200) {
                                 this.ngxService.stop();
                                 this.results = true;
-                                this.confidence = (response2.body.data[0].confidence) * 100;
-                                console.log(this.confidence);
-                                this.confidencePercentage = this.confidence.toFixed(2) + "%";
-                                console.log(this.confidencePercentage);
-                                console.log(this.confidencePercentage);
+                                this.confidence = response2.body.data[0].confidence;
                                 if (response2.body.data[0].predicton == 0) {
                                     this.prediction = "No hay presencia de ruido";
                                 } else if (response2.body.data[0].predicton == 1) {
