@@ -14,6 +14,7 @@ export class UploadResonanceComponent implements OnInit{
   email:string = sessionStorage.getItem("sub")!;
   imageFile:any;
   metadataFile:any;
+  metadataFileExists:boolean = false;
   prediction:string = "";
   confidence:number = 0;
   confidencePercentage:string = "";
@@ -93,6 +94,7 @@ export class UploadResonanceComponent implements OnInit{
 
   onUploadMetadata({e}: { e: any }): any{
     this.metadataFile = e.target.files[0];
+    this.metadataFileExists = true;
   }
 
   onCsv(){

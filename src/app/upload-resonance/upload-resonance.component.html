@@ -51,7 +51,7 @@
                 <input type="text" value="{{confidence*100}}%" readonly>
                 <span class="placeholder">Porcentaje de confianza</span>
             </div>
-            <div class="input-field stylish" style="width: calc(100% / 3 - 30px);">
+            <div class="input-field stylish" style="width: calc(100% / 3 - 30px);" *ngIf="metadataFileExists">
                 <input type="submit" style="background: #F8CD00;" (click)="onCsv()" value="Descargar CSV">
             </div>
         </div>
