@@ -1,4 +1,6 @@
-
+.loader-text {
+    white-space: pre-wrap;
+}
 
 label i{
     margin-right: 10px;
