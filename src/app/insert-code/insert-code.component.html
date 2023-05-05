@@ -4,16 +4,16 @@
         <div class="box">
             <div class="form">
                 <form [formGroup]="codeForm" (submit)="onCheck()" #localForm="ngForm">
-                    <h2>Reestablecer Contraseña</h2>
+                    <h2>Inserte el Código</h2>
                     <br>
-                    <p style="color: #495057; text-align: center">Ingrese el correo electrónico al cual se le enviará un código para reestablecer la contraseña</p>
+                    <p style="color: #495057; text-align: center">Ingrese el código enviado al correo ingresado.</p>
                     <div class="inputBox">
                         <input type="text"
-                               id="email"
-                               formControlName="email"
-                               [class.is-invalid]="codeForm.get('email')?.invalid"
+                               id="code"
+                               formControlName="code"
+                               [class.is-invalid]="codeForm.get('code')?.invalid"
                                required>
-                        <span>Correo Electrónico</span>
+                        <span>Código</span>
                         <i></i>
                     </div>
                     <small style="color: darkred" *ngIf="invalidCode"> El código ingresado es incorrecto </small>
