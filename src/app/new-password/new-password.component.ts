@@ -37,7 +37,7 @@ export class NewPasswordComponent implements OnInit{
 
     if (this.newPasswordForm.get('password')?.valid && this.newPasswordForm.get('confirmPassword')?.valid){
       let request = {
-        "email" : this.email,
+        "email" : sessionStorage.getItem("reset-email"),
         "password" : this.newPasswordForm.get('password')?.value
       };
       this.http.post('http://127.0.0.1:9000/api/respwd', request, { observe: 'response' }).subscribe(
