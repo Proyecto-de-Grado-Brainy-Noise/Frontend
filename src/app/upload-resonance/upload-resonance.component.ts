@@ -100,7 +100,7 @@ export class UploadResonanceComponent implements OnInit{
   onCsv(){
       const params = new HttpParams().set('task_id', this.task_id);
 
-      this.http.get('http:/127.0.0.1:9000/queries/getCurrentResultPredictionFile/', {
+      this.http.get('http://127.0.0.1:9000/queries/getCurrentResultPredictionFile', {
           responseType: 'blob',
           params
       }).subscribe(
