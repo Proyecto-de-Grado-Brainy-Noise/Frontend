@@ -41,6 +41,7 @@ export class ResetPasswordComponent implements OnInit{
           (response: HttpResponse<any>) => {
             if (response.status == 200){
               this.toastr.success(response.body.message);
+              sessionStorage.setItem("reset-email", this.resetForm.get("email")?.value);
               this.reset = true;
               this.resetEvent.emit(this.reset);
               this.router.navigate(["insert-code"])

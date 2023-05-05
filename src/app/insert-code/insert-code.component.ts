@@ -26,7 +26,11 @@ export class InsertCodeComponent {
   onCheck(){
     this.invalidCode = !!this.codeForm.get('code')?.invalid;
     if (this.codeForm.get('code')?.valid){
-      this.http.post('http://127.0.0.1:9000/api/checkcode', this.codeForm.value, { observe: 'response' }).subscribe(
+      let request = {
+          "code" : this.codeForm.get("code")?.value,
+          "email" : sessionStorage.getItem("reset-email")
+      };
+      this.http.post('http://127.0.0.1:9000/api/checkcode', request, { observe: 'response' }).subscribe(
           (response: HttpResponse<any>) => {
             if (response.status == 200){
               this.toastr.success(response.body.message);
