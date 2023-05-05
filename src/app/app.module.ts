@@ -28,12 +28,14 @@ import { ShowFoundUserComponent } from './show-found-user/show-found-user.compon
 import { TokenInterceptor } from "./interceptors/token.interceptor";
 import {NgxUiLoaderModule} from "ngx-ui-loader";
 import {AuthorizationService} from "./authorization.service";
+import { InsertCodeComponent } from './insert-code/insert-code.component';
 
 const routes: Routes = [
   { path: '', component:LoginComponent},
   { path: 'login', component: LoginComponent },
   { path: 'reset-password', component: ResetPasswordComponent },
-  { path: 'new-password/:email', component: NewPasswordComponent },
+  { path: 'insert-code', component: InsertCodeComponent },
+  { path: 'new-password', component: NewPasswordComponent },
   { path: 'home', component: BodyComponent,children: [
       { path: '', redirectTo: 'upload-resonance', pathMatch: 'full'/*, canActivate: [AuthorizationService]*/ },
       { path: 'upload-resonance', component: UploadResonanceComponent, canActivate: [AuthorizationService] },
@@ -64,6 +66,7 @@ const routes: Routes = [
     NewPasswordComponent,
     PopUpComponent,
     ShowFoundUserComponent,
+    InsertCodeComponent,
   ],
   imports: [
     BrowserModule,

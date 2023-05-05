@@ -25,9 +25,9 @@ export class ResetPasswordComponent implements OnInit{
   constructor(
       private formBuilder: FormBuilder,
       private http: HttpClient,
-      private toastr: ToastrService
-  ) {
-  }
+      private toastr: ToastrService,
+      private router: Router
+  ) {}
 
   ngOnInit(): void {
 
@@ -43,6 +43,7 @@ export class ResetPasswordComponent implements OnInit{
               this.toastr.success(response.body.message);
               this.reset = true;
               this.resetEvent.emit(this.reset);
+              this.router.navigate(["insert-code"])
             } else {
               this.toastr.error(response.body.message);
             }
