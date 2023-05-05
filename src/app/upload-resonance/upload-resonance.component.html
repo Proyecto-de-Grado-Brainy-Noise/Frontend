@@ -1,4 +1,4 @@
-<ngx-ui-loader fgsColor="#074E9F" text="Cargando... \n (Esto puede tardar unos minutos)" class="loader-text"></ngx-ui-loader>
+<ngx-ui-loader fgsColor="#074E9F" text="Cargando...(Esto puede tardar unos minutos)" class="loader-text"></ngx-ui-loader>
 <h1>Nueva Consulta</h1>
 <div class="card">
     <div class="card-head">
@@ -42,6 +42,7 @@
         <div class="content" *ngIf="!results">
             <p style="color: #5B5B5B">Actualmente no hay resultados a mostrar</p>
         </div>
+
         <div class="inputs" *ngIf="results">
             <div class="input-field stylish" style="width: calc(100% / 3 - 30px);">
                 <input type="text" style="color: #0057B8; font-weight: bold;" [value]="prediction" readonly>
