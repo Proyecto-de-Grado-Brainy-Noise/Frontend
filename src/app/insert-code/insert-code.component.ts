@@ -11,7 +11,7 @@ import {Router} from "@angular/router";
 })
 export class InsertCodeComponent {
   codeForm: FormGroup = this.formBuilder.group({
-    code: ['', [Validators.required, '']],
+    code: ['', [Validators.required]],
   }, {updateOn: 'submit'});
 
   invalidCode:boolean = false;
