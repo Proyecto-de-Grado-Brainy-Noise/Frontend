@@ -69,11 +69,11 @@ export class NewUserComponent implements OnInit {
               this.toastr.success("Usuario creado exitósamente");
               this.router.navigate(["home/admin/users"]);
             } else {
-              this.toastr.error(response.body.message);
+              this.toastr.error(response.body);
             }
           },
           error => {
-            this.toastr.error(error.error.message);
+            this.toastr.error(error);
           }
       );
     }
