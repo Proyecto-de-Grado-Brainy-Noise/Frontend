@@ -3,7 +3,7 @@ import * as chrome from 'selenium-webdriver/chrome';
 import * as path from 'path';
 import * as fs from 'fs';
 
-describe('All Images Integration Test', () => {
+describe('History Integration Test', () => {
     let driver:WebDriver;
 
     beforeAll(async () => {
