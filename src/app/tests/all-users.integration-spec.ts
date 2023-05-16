@@ -114,4 +114,73 @@ describe('All Users Integration Test', () => {
         const currentUrl = await driver.getCurrentUrl();
         expect(currentUrl).toContain('admin/edit-user/');
     });
+
+    it('should edit user', async () => {
+        await driver.get('http://localhost:4200/login');
+
+        const emailInput = await driver.findElement(By.id('email'));
+        const passwordInput = await driver.findElement(By.id('password'));
+        const submitButton = await driver.findElement(By.css('input[type="submit"]'));
+
+        await emailInput.sendKeys('estefanibearroyo@gmail.com');
+        await passwordInput.sendKeys('Javeriana2023');
+        await submitButton.click();
+
+        await driver.wait(until.urlContains('home'), 10000);
+
+        await driver.wait(until.elementLocated(By.css('a[href="/home/admin/users"]')), 10000);
+
+        const listUsersButton = await driver.findElement(By.css('a[href="/home/admin/users"]'));
+        await listUsersButton.click();
+
+        await driver.wait(until.urlContains('home/admin/users'), 10000);
+
+        await driver.wait(until.elementLocated(By.css('.content-table tbody tr')), 10000);
+        let usersTable = await driver.findElement(By.css('.content-table tbody'));
+        const initialUsers = await usersTable.findElements(By.css('tr'));
+        expect(initialUsers.length).toBeGreaterThan(0);
+
+        const editUserIcon = await initialUsers[0].findElement(By.css('.fa-edit'));
+        await editUserIcon.click();
+
+        await driver.wait(until.urlContains('admin/edit-user/'), 10000);
+
+        let currentUrl = await driver.getCurrentUrl();
+        expect(currentUrl).toContain('admin/edit-user/');
+
+        const nameInput = await driver.findElement(By.id('name'));
+        const middleNameInput = await driver.findElement(By.id('name2'));
+        const lastnameInput = await driver.findElement(By.id('lastname'));
+        const secondLastnameInput = await driver.findElement(By.id('lastname2'));
+        const editButton = await driver.findElement(By.css('input[type="submit"]'));
+
+        await middleNameInput.sendKeys('Maria');
+        const name = await nameInput.getAttribute('value');
+        const lastname = await lastnameInput.getAttribute('value');
+        const secondLastname = await secondLastnameInput.getAttribute('value');
+        await editButton.click();
+
+        await driver.wait(until.urlContains('home/admin/users'), 10000);
+
+        currentUrl = await driver.getCurrentUrl();
+        expect(currentUrl).toContain('home/admin/users');
+
+        usersTable = await driver.findElement(By.css('.content-table tbody'));
+        const rows = await usersTable.findElements(By.css('tr'));
+
+        const userName = name + ' Maria ' + lastname;
+
+        let userFound = false;
+        for (let row of rows) {
+            const cell = await row.findElement(By.css('td:nth-child(2)'));
+            const cellText = await cell.getText();
+
+            if (cellText === userName) {
+                userFound = true;
+                break;
+            }
+        }
+
+        expect(userFound).toBe(true);
+    });
 });

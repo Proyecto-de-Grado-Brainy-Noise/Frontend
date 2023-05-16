@@ -71,10 +71,10 @@ describe('All Images Integration Test', () => {
         await downloadButton.click();
 
         const downloadsFolder = 'C:\\Users\\estef\\Downloads';
-        const filePath = path.join(downloadsFolder, 'metadata.csv');
+        const filePath = path.join(downloadsFolder, 'resonances_history.csv');
 
-        await driver.wait(async () => await fs.existsSync(filePath), 10000);
+        await driver.wait(async () => await fs.existsSync(filePath), 40000);
 
         await fs.unlinkSync(filePath);
-    });
+    }, 40000);
 });

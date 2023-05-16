@@ -22,7 +22,7 @@ describe('New User Integration Test', () => {
         const submitButton = await driver.findElement(By.css('input[type="submit"]'));
 
         await emailInput.sendKeys('estefanibearroyo@gmail.com');
-        await passwordInput.sendKeys('Cumbres114');
+        await passwordInput.sendKeys('Javeriana2023');
         await submitButton.click();
 
         await driver.wait(until.urlContains('home'), 10000);
@@ -35,6 +35,7 @@ describe('New User Integration Test', () => {
         await driver.wait(until.urlContains('home/admin/new-user'), 10000);
 
         const nameInput = await driver.findElement(By.id('name'));
+        const name2Input = await driver.findElement(By.id('name2'));
         const lastnameInput = await driver.findElement(By.id('lastname'));
         const birthdateInput = await driver.findElement(By.id('birthdate'));
         const doctypeInput = await driver.findElement(By.id('doctype'));
@@ -48,12 +49,13 @@ describe('New User Integration Test', () => {
         const submitNewButton = await driver.findElement(By.css('input[type="submit"]'));
 
         await nameInput.sendKeys("Luis");
+        await name2Input.sendKeys("Rogelio");
         await lastnameInput.sendKeys("Armenio");
         await birthdateInput.sendKeys("2001-01-01");
         await doctypeInput.sendKeys("Cédula de ciudadania");
-        await documentInput.sendKeys("1193093868");
-        await emailNewInput.sendKeys("luisarmenio1@mailinator.com");
-        await idEmployeeInput.sendKeys("12345686");
+        await documentInput.sendKeys("1193093871");
+        await emailNewInput.sendKeys("luisrarmenio12@mailinator.com");
+        await idEmployeeInput.sendKeys("12345691");
         await jobtitleInput.sendKeys("Médico interno");
         await areaInput.sendKeys("Medicina interna");
         await roleInput.sendKeys("U");
@@ -64,5 +66,23 @@ describe('New User Integration Test', () => {
 
         const currentUrl = await driver.getCurrentUrl();
         expect(currentUrl).toContain('home/admin/users');
+
+        let usersTable = await driver.findElement(By.css('.content-table tbody'));
+        const rows = await usersTable.findElements(By.css('tr'));
+
+        const userName = "Luis Rogelio Armenio";
+
+        let userFound = false;
+        for (let row of rows) {
+            const cell = await row.findElement(By.css('td:nth-child(2)'));
+            const cellText = await cell.getText();
+
+            if (cellText === userName) {
+                userFound = true;
+                break;
+            }
+        }
+
+        expect(userFound).toBe(true);
     }, 40000);
 });

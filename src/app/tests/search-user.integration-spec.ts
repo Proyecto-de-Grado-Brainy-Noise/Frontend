@@ -22,7 +22,7 @@ describe('Search User Integration Test', () => {
         const submitButton = await driver.findElement(By.css('input[type="submit"]'));
 
         await emailInput.sendKeys('estefanibearroyo@gmail.com');
-        await passwordInput.sendKeys('Cumbres114');
+        await passwordInput.sendKeys('Javeriana2023');
         await submitButton.click();
 
         await driver.wait(until.urlContains('home'), 10000);
@@ -56,7 +56,7 @@ describe('Search User Integration Test', () => {
         const submitButton = await driver.findElement(By.css('input[type="submit"]'));
 
         await emailInput.sendKeys('estefanibearroyo@gmail.com');
-        await passwordInput.sendKeys('Cumbres114');
+        await passwordInput.sendKeys('Javeriana2023');
         await submitButton.click();
 
         await driver.wait(until.urlContains('home'), 10000);
@@ -71,7 +71,7 @@ describe('Search User Integration Test', () => {
         const idEmployeeInput = await driver.findElement(By.id('idEmployee'));
         const submitSearchDocButton = await driver.findElement(By.id('id_summit'));
 
-        await idEmployeeInput.sendKeys("12345656");
+        await idEmployeeInput.sendKeys("12345691");
         await submitSearchDocButton.click();
 
         await driver.wait(until.urlContains('home/admin/found-user/'), 10000);
